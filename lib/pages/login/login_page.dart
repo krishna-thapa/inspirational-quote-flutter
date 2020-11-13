@@ -15,7 +15,7 @@ class _LoginPageState extends State<LoginPage> {
           gradient: LinearGradient(
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
-            colors: [Colors.blueGrey, Colors.tealAccent]
+            colors: [Colors.green, Colors.tealAccent]
           )
         ),
         width: double.infinity,
@@ -30,7 +30,41 @@ class _LoginPageState extends State<LoginPage> {
                 FadeAnimation(1, Text("Welcome", style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 30
+                ),)),
+                SizedBox(height: 20,),
+                FadeAnimation(1.2, Text("Login to see the wonderland",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.grey[700],
+                  fontSize: 15
                 ),))
+              ],
+            ),
+            FadeAnimation(1.4, Container(
+              height: MediaQuery.of(context).size.height / 2,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/welcome.png')
+                )
+              ),
+            )),
+            Column(
+              children: <Widget>[
+                FadeAnimation(1.5, MaterialButton(
+                  minWidth: double.infinity,
+                  height: 60,
+                  onPressed: (){},
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                      color: Colors.black
+                    ),
+                    borderRadius: BorderRadius.circular(50)
+                  ),
+                  child: Text("Login", style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 18
+                  ),),
+                ))
               ],
             )
           ],
