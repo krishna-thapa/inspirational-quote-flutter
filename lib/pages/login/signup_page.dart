@@ -16,37 +16,33 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: true,
-      extendBodyBehindAppBar: true,
-      appBar: AppBarLogin(),
-      body: Container(
+        resizeToAvoidBottomInset: true,
+        extendBodyBehindAppBar: true,
+        appBar: AppBarLogin(),
+        body: Container(
           decoration: baseBackgroundDecoration,
           padding: EdgeInsets.symmetric(horizontal: 40),
           height: MediaQuery.of(context).size.height,
           width: double.infinity,
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20),
-                ),
-                HeadingMessages("Sign up", "Create a new account"),
-                Column(
-                  children: [
-                    FadeAnimation(1.2, InputField("First Name")),
-                    FadeAnimation(1.2, InputField("Last Name")),
-                    FadeAnimation(1.3, InputField("Email", true)),
-                    FadeAnimation(1.3, InputField("Password", true)),
-                    FadeAnimation(1.4, InputField("Confirm Password", true))
-                  ],
-                ),
-                ColoredButton("Sign up"),
-                subHeadingLogin("Already have an account?", "Login", 1.2),
-                SizedBox(height: 20),
-              ],
-            ),
-          )),
-    );
+          child: ListView(
+            children: [
+              HeadingMessages("Sign up", "Create a new account"),
+              Column(
+                children: [
+                  FadeAnimation(1.2, InputField("First Name")),
+                  FadeAnimation(1.2, InputField("Last Name")),
+                  FadeAnimation(1.3, InputField("Email", true)),
+                  FadeAnimation(1.3, InputField("Password", true)),
+                  FadeAnimation(1.4, InputField("Confirm Password", true))
+                ],
+              ),
+              ColoredButton("Sign up"),
+              subHeadingLogin("Already have an account?", "Login", 1.2),
+              SizedBox(height: 20),
+            ],
+          ),
+        )
+        //),
+        );
   }
 }

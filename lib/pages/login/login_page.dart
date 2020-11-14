@@ -24,39 +24,42 @@ class _LoginPageState extends State<LoginPage> {
         height: MediaQuery.of(context).size.height,
         width: double.infinity,
         decoration: baseBackgroundDecoration,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: ListView(
           children: <Widget>[
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
-                  ),
                   HeadingMessages("Login", "Login to your account"),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 40),
                     child: Column(
                       children: [
                         FadeAnimation(1.1, loginForm("Email", Icons.email)),
-                        FadeAnimation(1.2, loginForm("Password", Icons.lock_outline, true)),
-                        SizedBox(height: 5,),
+                        FadeAnimation(1.2,
+                            loginForm("Password", Icons.lock_outline, true)),
+                        SizedBox(
+                          height: 5,
+                        ),
                         ColoredButton("Login"),
                       ],
                     ),
                   ),
                   subHeadingLogin("Don't have an account?", "Sign up", 1.2),
-                  FadeAnimation(1.2, Container(
-                    height: MediaQuery.of(context).size.height / 3,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage('assets/images/today_is_your_day.png'),
-                            fit: BoxFit.cover,
-                            alignment: Alignment.center
-                        )
-                    ),
-                  ))
+                  SizedBox(
+                    height: 5,
+                  ),
+                  FadeAnimation(
+                      1.2,
+                      Container(
+                        height: MediaQuery.of(context).size.height / 3,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage(
+                                    'assets/images/today_is_your_day.png'),
+                                fit: BoxFit.cover,
+                                alignment: Alignment.center)),
+                      ))
                 ],
               ),
             )
