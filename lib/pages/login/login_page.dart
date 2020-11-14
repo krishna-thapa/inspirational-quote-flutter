@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:inspirational_quote_flutter/animations/FadeAnimation.dart';
-import 'package:inspirational_quote_flutter/widgets/login_button.dart';
-import 'package:inspirational_quote_flutter/widgets/signup_button.dart';
+import 'package:inspirational_quote_flutter/widgets/heading_messages.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -12,50 +10,39 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
-            colors: [Colors.green, Colors.tealAccent]
-          )
+      resizeToAvoidBottomInset: false,
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        elevation: 0,
+        brightness: Brightness.light,
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          onPressed: (){
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back_ios, size: 20, color: Colors.black,),
         ),
-        width: double.infinity,
+      ),
+      body: Container(
         height: MediaQuery.of(context).size.height,
-        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 50),
+        width: double.infinity,
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [Colors.green, Colors.tealAccent]
+            )
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Column(
-              children: <Widget>[
-                FadeAnimation(1, Text("Welcome", style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30
-                ),)),
-                SizedBox(height: 20,),
-                FadeAnimation(1.2, Text("Login to see the Wonderland",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.grey[700],
-                  fontSize: 15
-                ),))
-              ],
-            ),
-            FadeAnimation(1.4, Container(
-              height: MediaQuery.of(context).size.height / 2,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/welcome.png')
-                )
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  HeadingMessages("Login", "Login to your account"),
+                ],
               ),
-            )),
-            Column(
-              children: <Widget>[
-                LoginButton(),
-                SizedBox(height: 20,),
-                SignupButton()
-              ],
             )
           ],
         ),

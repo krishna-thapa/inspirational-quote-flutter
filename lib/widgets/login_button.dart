@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inspirational_quote_flutter/animations/FadeAnimation.dart';
+import 'package:inspirational_quote_flutter/pages/login/login_page.dart';
 
 class LoginButton extends StatefulWidget {
   @override
@@ -12,7 +13,9 @@ class LoginButton extends StatefulWidget {
       return FadeAnimation(1.5, MaterialButton(
         minWidth: double.infinity,
         height: 60,
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+        },
         shape: RoundedRectangleBorder(
             side: BorderSide(
                 color: Colors.black
