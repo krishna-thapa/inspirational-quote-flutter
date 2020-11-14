@@ -3,8 +3,8 @@ import 'package:inspirational_quote_flutter/animations/FadeAnimation.dart';
 import 'package:inspirational_quote_flutter/widgets/appbar_login.dart';
 import 'package:inspirational_quote_flutter/widgets/background_login.dart';
 import 'package:inspirational_quote_flutter/widgets/heading_messages.dart';
-import 'package:inspirational_quote_flutter/widgets/input_field.dart';
 import 'package:inspirational_quote_flutter/widgets/colored_button.dart';
+import 'package:inspirational_quote_flutter/widgets/login_form.dart';
 import 'package:inspirational_quote_flutter/widgets/sub_heading_login.dart';
 
 class LoginPage extends StatefulWidget {
@@ -39,8 +39,8 @@ class _LoginPageState extends State<LoginPage> {
                     padding: EdgeInsets.symmetric(horizontal: 40),
                     child: Column(
                       children: [
-                        FadeAnimation(1.1, InputField("Email")),
-                        FadeAnimation(1.2, InputField("Password", true)),
+                        FadeAnimation(1.1, loginForm("Email", Icons.email)),
+                        FadeAnimation(1.2, loginForm("Password", Icons.lock_outline, true)),
                         SizedBox(height: 5,),
                         ColoredButton("Login"),
                       ],

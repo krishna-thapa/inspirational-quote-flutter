@@ -10,6 +10,7 @@ class InputField extends StatefulWidget {
   _InputFieldState createState() => _InputFieldState();
 }
 
+// Might have to merge some common methods with login_form file
 class _InputFieldState extends State<InputField> {
   @override
   Widget build(BuildContext context) {
