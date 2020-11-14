@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inspirational_quote_flutter/animations/FadeAnimation.dart';
+import 'package:inspirational_quote_flutter/widgets/background_login.dart';
 import 'package:inspirational_quote_flutter/widgets/heading_messages.dart';
 import 'package:inspirational_quote_flutter/widgets/login_button.dart';
 import 'package:inspirational_quote_flutter/widgets/colored_button.dart';
@@ -14,13 +15,7 @@ class _LoginHomePageState extends State<LoginHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
-            colors: [Colors.green, Colors.tealAccent]
-          )
-        ),
+        decoration: baseBackgroundDecoration,
         width: double.infinity,
         height: MediaQuery.of(context).size.height,
         padding: EdgeInsets.symmetric(horizontal: 30, vertical: 50),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inspirational_quote_flutter/animations/FadeAnimation.dart';
+import 'package:inspirational_quote_flutter/pages/login/signup_page.dart';
 
 class ColoredButton extends StatefulWidget {
   final String label;
@@ -27,7 +28,11 @@ class _ColoredButtonState extends State<ColoredButton> {
       child: MaterialButton(
         minWidth: double.infinity,
         height: 60,
-        onPressed: (){},
+        onPressed: (){
+          Navigator.push(context, MaterialPageRoute(
+              builder: (context) => SignupPage())
+          );
+        },
         color: Colors.teal,
         elevation: 0,
         shape: RoundedRectangleBorder(

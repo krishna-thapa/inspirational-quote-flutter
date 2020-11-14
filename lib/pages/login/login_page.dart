@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:inspirational_quote_flutter/animations/FadeAnimation.dart';
+import 'package:inspirational_quote_flutter/widgets/appbar_login.dart';
+import 'package:inspirational_quote_flutter/widgets/background_login.dart';
 import 'package:inspirational_quote_flutter/widgets/heading_messages.dart';
 import 'package:inspirational_quote_flutter/widgets/input_field.dart';
 import 'package:inspirational_quote_flutter/widgets/colored_button.dart';
@@ -15,27 +17,11 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       //backgroundColor: Colors.white,
-      appBar: AppBar(
-        elevation: 0,
-        brightness: Brightness.light,
-        backgroundColor: Colors.greenAccent,
-        leading: IconButton(
-          onPressed: (){
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.arrow_back_ios, size: 20, color: Colors.black,),
-        ),
-      ),
+      appBar: AppBarLogin(),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: double.infinity,
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-                colors: [Colors.green, Colors.tealAccent]
-            )
-        ),
+        decoration: baseBackgroundDecoration,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
