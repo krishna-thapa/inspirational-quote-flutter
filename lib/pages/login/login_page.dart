@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:inspirational_quote_flutter/animations/FadeAnimation.dart';
+import 'package:inspirational_quote_flutter/widgets/login_button.dart';
+import 'package:inspirational_quote_flutter/widgets/signup_button.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -32,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
                   fontSize: 30
                 ),)),
                 SizedBox(height: 20,),
-                FadeAnimation(1.2, Text("Login to see the wonderland",
+                FadeAnimation(1.2, Text("Login to see the Wonderland",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.grey[700],
@@ -50,21 +52,9 @@ class _LoginPageState extends State<LoginPage> {
             )),
             Column(
               children: <Widget>[
-                FadeAnimation(1.5, MaterialButton(
-                  minWidth: double.infinity,
-                  height: 60,
-                  onPressed: (){},
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                      color: Colors.black
-                    ),
-                    borderRadius: BorderRadius.circular(50)
-                  ),
-                  child: Text("Login", style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 18
-                  ),),
-                ))
+                LoginButton(),
+                SizedBox(height: 20,),
+                SignupButton()
               ],
             )
           ],
