@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:inspirational_quote_flutter/animations/FadeAnimation.dart';
 import 'package:inspirational_quote_flutter/widgets/heading_messages.dart';
 import 'package:inspirational_quote_flutter/widgets/login_button.dart';
-import 'package:inspirational_quote_flutter/widgets/signup_button.dart';
+import 'package:inspirational_quote_flutter/widgets/colored_button.dart';
 
 class LoginHomePage extends StatefulWidget {
   @override
@@ -29,11 +29,11 @@ class _LoginHomePageState extends State<LoginHomePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             HeadingMessages("Welcome", "Login to see the Wonderland"),
-            FadeAnimation(1.4, Container(
+            FadeAnimation(1.3, Container(
               height: MediaQuery.of(context).size.height / 2,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/images/welcome.png')
+                  image: AssetImage('assets/images/good_vibe.png')
                 )
               ),
             )),
@@ -41,7 +41,7 @@ class _LoginHomePageState extends State<LoginHomePage> {
               children: <Widget>[
                 LoginButton(),
                 SizedBox(height: 20,),
-                SignupButton()
+                ColoredButton("Sign up")
               ],
             )
           ],

@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:inspirational_quote_flutter/animations/FadeAnimation.dart';
 
-class SignupButton extends StatefulWidget {
+class ColoredButton extends StatefulWidget {
+  final String label;
+
+  const ColoredButton(this.label);
+
   @override
-  _SignupButtonState createState() => _SignupButtonState();
+  _ColoredButtonState createState() => _ColoredButtonState();
 }
 
-class _SignupButtonState extends State<SignupButton> {
+class _ColoredButtonState extends State<ColoredButton> {
   @override
   Widget build(BuildContext context) {
-    return FadeAnimation(1.6, Container(
+    return FadeAnimation(1.4, Container(
       padding: EdgeInsets.only(top: 3, left: 3),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
@@ -29,7 +33,7 @@ class _SignupButtonState extends State<SignupButton> {
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(50)
         ),
-        child: Text("Sign up", style: TextStyle(
+        child: Text(widget.label, style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w600
         )),
