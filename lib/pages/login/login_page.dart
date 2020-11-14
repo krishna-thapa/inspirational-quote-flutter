@@ -5,6 +5,7 @@ import 'package:inspirational_quote_flutter/widgets/background_login.dart';
 import 'package:inspirational_quote_flutter/widgets/heading_messages.dart';
 import 'package:inspirational_quote_flutter/widgets/input_field.dart';
 import 'package:inspirational_quote_flutter/widgets/colored_button.dart';
+import 'package:inspirational_quote_flutter/widgets/sub_heading_login.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -16,6 +17,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      extendBodyBehindAppBar: true,
       //backgroundColor: Colors.white,
       appBar: AppBarLogin(),
       body: Container(
@@ -29,6 +31,9 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                  ),
                   HeadingMessages("Login", "Login to your account"),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 40),
@@ -41,15 +46,7 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
                   ),
-                  FadeAnimation(1.2, Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text("Don't have an account?"),
-                      Text("Sign up", style: TextStyle(
-                          fontWeight: FontWeight.w600, fontSize: 18
-                      ),),
-                    ],
-                  )),
+                  subHeadingLogin("Don't have an account?", "Sign up", 1.2),
                   FadeAnimation(1.2, Container(
                     height: MediaQuery.of(context).size.height / 3,
                     decoration: BoxDecoration(

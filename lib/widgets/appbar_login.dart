@@ -6,7 +6,7 @@ class AppBarLogin extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       elevation: 0,
       brightness: Brightness.light,
-      backgroundColor: Colors.greenAccent,
+      backgroundColor: Colors.transparent,
       leading: IconButton(
         onPressed: (){
           Navigator.pop(context);
@@ -17,5 +17,5 @@ class AppBarLogin extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => new Size.fromHeight(50.0);
+  Size get preferredSize => new Size.fromHeight(40.0);
 }
