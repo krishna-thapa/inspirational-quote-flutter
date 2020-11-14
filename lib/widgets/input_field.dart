@@ -22,7 +22,7 @@ class _InputFieldState extends State<InputField> {
           fontWeight: FontWeight.w400,
           color: Colors.black87
         )),
-        SizedBox(height: 5,),
+        SizedBox(height: 5),
         TextField(
           obscureText: widget.obscureText,
           decoration: InputDecoration(
@@ -35,7 +35,7 @@ class _InputFieldState extends State<InputField> {
             )
           ),
         ),
-        SizedBox(height: 30,),
+        SizedBox(height: 20,),
       ],
     );
   }
