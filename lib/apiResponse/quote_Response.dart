@@ -9,6 +9,8 @@ Future<Quote> fetchQuoteOfTheDay() async {
   if (response.statusCode == 200) {
     return Quote.fromJson(json.decode(response.body));
   } else {
+    // Make response error body for each response code
+    // Make enum in backend that have common error messages
     throw Exception('Failed to load Quote');
   }
 }

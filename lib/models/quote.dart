@@ -8,6 +8,7 @@ class Quote {
   Quote({this.id, this.csvId, this.quote, this.author, this.genre});
 
   // Quote.fromJson will parse the JSON response from the API and return the response.
+  // How to catch error here? When it can't parse to the json?
   factory Quote.fromJson(Map<String, dynamic> json) {
     return Quote(
       id: json['id'],
