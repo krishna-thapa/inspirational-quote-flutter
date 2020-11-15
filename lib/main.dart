@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:inspirational_quote_flutter/pages/login/login_home_page.dart';
+import 'package:inspirational_quote_flutter/pages/quote/quote_home_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         // visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginHomePage(),
+      home: QuoteHomePage(),
       debugShowCheckedModeBanner: false,
     );
   }
