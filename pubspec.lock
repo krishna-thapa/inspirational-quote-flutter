@@ -50,6 +50,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.3"
+  dio:
+    dependency: "direct main"
+    description:
+      name: dio
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.10"
   fake_async:
     dependency: transitive
     description:
@@ -62,11 +69,25 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_riverpod:
+    dependency: "direct main"
+    description:
+      name: flutter_riverpod
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.12.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
     source: sdk
     version: "0.0.0"
+  freezed_annotation:
+    dependency: transitive
+    description:
+      name: freezed_annotation
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.12.0"
   http:
     dependency: "direct main"
     description:
@@ -81,6 +102,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.4"
+  json_annotation:
+    dependency: transitive
+    description:
+      name: json_annotation
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.1.1"
   matcher:
     dependency: transitive
     description:
@@ -109,27 +137,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.9.0"
-  sa_anicoto:
+  riverpod:
     dependency: transitive
     description:
-      name: sa_anicoto
+      name: riverpod
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.0"
-  sa_multi_tween:
-    dependency: transitive
-    description:
-      name: sa_multi_tween
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.3"
-  sa_stateless_animation:
-    dependency: transitive
-    description:
-      name: sa_stateless_animation
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.0"
+    version: "0.12.1"
   sa_v1_migration:
     dependency: transitive
     description:
@@ -143,7 +157,7 @@ packages:
       name: simple_animations
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.3"
+    version: "2.4.0"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -163,6 +177,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.9.5"
+  state_notifier:
+    dependency: transitive
+    description:
+      name: state_notifier
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.6.0"
   stream_channel:
     dependency: transitive
     description:
@@ -183,14 +204,14 @@ packages:
       name: supercharged
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.11.1"
+    version: "1.12.0"
   supercharged_dart:
     dependency: transitive
     description:
       name: supercharged_dart
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.3.1"
+    version: "1.4.0"
   term_glyph:
     dependency: transitive
     description:
@@ -221,3 +242,4 @@ packages:
     version: "2.0.8"
 sdks:
   dart: ">=2.9.0-14.0.dev <3.0.0"
+  flutter: ">=1.17.0"
