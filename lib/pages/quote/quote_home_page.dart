@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:inspirational_quote_flutter/repository/quote_repository.dart';
 import 'package:inspirational_quote_flutter/widgets/background_login.dart';
+import 'package:inspirational_quote_flutter/viewmodels/quote_vm.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class QuoteHomePage extends StatefulWidget {
   @override
@@ -15,41 +17,15 @@ class _QuoteHomePageState extends State<QuoteHomePage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    //final quoteVm = useProvider(quoteProvider);
+
     return Scaffold(
       body: Container(
         decoration: baseBackgroundDecoration,
         width: double.infinity,
         height: MediaQuery.of(context).size.height,
-        child: ListView(
-          children: [
-            Center(
-              child: QuoteRepository(),
-            )
-          ],
-        ),
+        child: QuoteRepository(),
       ),
-      floatingActionButton: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            InkWell(
-              onTap: () {
-                // Add your onPressed code here!
-              },
-              child: Icon(Icons.refresh, size: 35, color: Colors.black),
-            ),
-            InkWell(
-              onTap: () {
-                // Add your onPressed code here!
-              },
-              child: Icon(Icons.content_copy, size: 30, color: Colors.black),
-            ),
-            InkWell(
-              onTap: () {
-                // Add your onPressed code here!
-              },
-              child: Icon(Icons.share, size: 30, color: Colors.black),
-            )
-          ]),
     );
   }
 }

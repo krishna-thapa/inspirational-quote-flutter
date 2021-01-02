@@ -1,22 +1,48 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:inspirational_quote_flutter/exception/quote_exception.dart';
 import 'package:inspirational_quote_flutter/models/quote.dart';
 
-final quoteServiceProvider = Provider<QuoteService>((ref) {
-  //final config = ref.watch(environmentConfigProvider);
-  return QuoteService(Dio());
-});
-
 class QuoteService {
-  QuoteService(this._dio);
 
-  final Dio _dio;
+  Dio _dio;
+
+  QuoteService() {
+    BaseOptions options = BaseOptions(
+        receiveTimeout: 100000,
+        connectTimeout: 100000,
+        baseUrl: "http://localhost:9000/quote");
+    _dio = Dio(options);
+    _dio.interceptors.add(PrettyDioLogger());
+  }
 
   Future<Quote> getRandomQuote() async {
+    final url = '/random';
     try {
-      final response = await _dio.get("http://localhost:9000/quote/quoteOfTheDay");
-      final result = Quote.fromJson(response.data);
+      final response = await _dio.get(url);
+      Quote result = Quote.fromJson(response.data);
+      return result;
+    } on DioError catch (dioError) {
+      throw QuoteException.fromDioError(dioError);
+    }
+  }
+
+  Future<Quote> getQuoteOfTheDay() async {
+    final url = '/quoteOfTheDay';
+    try {
+      final response = await _dio.get(url);
+      Quote result = Quote.fromJson(response.data);
+      return result;
+    } on DioError catch (dioError) {
+      throw QuoteException.fromDioError(dioError);
+    }
+  }
+
+  Future<List<Quote>> getTenRandomQuotes() async {
+    final url = '/randomTen';
+    try {
+      final response = await _dio.get(url);
+      List<Quote> result = quotesModelFromJson(response.data);
       return result;
     } on DioError catch (dioError) {
       throw QuoteException.fromDioError(dioError);
