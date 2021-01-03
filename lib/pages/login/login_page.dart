@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/all.dart';
 import 'package:inspirational_quote_flutter/animations/FadeAnimation.dart';
 import 'package:inspirational_quote_flutter/widgets/appbar_login.dart';
@@ -8,7 +9,7 @@ import 'package:inspirational_quote_flutter/widgets/colored_button.dart';
 import 'package:inspirational_quote_flutter/widgets/login_form.dart';
 import 'package:inspirational_quote_flutter/widgets/sub_heading_login.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends StatefulHookWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
 }

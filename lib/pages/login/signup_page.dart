@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/all.dart';
 import 'package:inspirational_quote_flutter/animations/FadeAnimation.dart';
 import 'package:inspirational_quote_flutter/widgets/appbar_login.dart';
@@ -8,7 +9,7 @@ import 'package:inspirational_quote_flutter/widgets/heading_messages.dart';
 import 'package:inspirational_quote_flutter/widgets/input_field.dart';
 import 'package:inspirational_quote_flutter/widgets/sub_heading_login.dart';
 
-class SignupPage extends StatefulWidget {
+class SignupPage extends StatefulHookWidget {
   @override
   _SignupPageState createState() => _SignupPageState();
 }
