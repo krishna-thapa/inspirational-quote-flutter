@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/all.dart';
 import 'package:inspirational_quote_flutter/animations/FadeAnimation.dart';
 import 'package:inspirational_quote_flutter/widgets/appbar_login.dart';
-import 'package:inspirational_quote_flutter/widgets/background_login.dart';
 import 'package:inspirational_quote_flutter/widgets/colored_button.dart';
+import 'package:inspirational_quote_flutter/widgets/colors.dart';
 import 'package:inspirational_quote_flutter/widgets/heading_messages.dart';
 import 'package:inspirational_quote_flutter/widgets/input_field.dart';
 import 'package:inspirational_quote_flutter/widgets/sub_heading_login.dart';
@@ -15,12 +16,13 @@ class SignupPage extends StatefulWidget {
 class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
+    final themeColor = useProvider(themeColorNotifierProvider);
     return Scaffold(
         resizeToAvoidBottomInset: true,
         extendBodyBehindAppBar: true,
         appBar: AppBarLogin(),
         body: Container(
-          decoration: baseBackgroundDecoration,
+          decoration: themeColor.baseBackgroundDecoration,
           padding: EdgeInsets.symmetric(horizontal: 40),
           height: MediaQuery.of(context).size.height,
           width: double.infinity,

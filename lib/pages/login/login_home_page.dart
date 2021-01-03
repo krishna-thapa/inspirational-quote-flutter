@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/all.dart';
 import 'package:inspirational_quote_flutter/animations/FadeAnimation.dart';
-import 'package:inspirational_quote_flutter/widgets/background_login.dart';
+import 'package:inspirational_quote_flutter/widgets/colors.dart';
 import 'package:inspirational_quote_flutter/widgets/heading_messages.dart';
 import 'package:inspirational_quote_flutter/widgets/login_button.dart';
 import 'package:inspirational_quote_flutter/widgets/colored_button.dart';
@@ -13,9 +14,10 @@ class LoginHomePage extends StatefulWidget {
 class _LoginHomePageState extends State<LoginHomePage> {
   @override
   Widget build(BuildContext context) {
+    final themeColor = useProvider(themeColorNotifierProvider);
     return Scaffold(
       body: Container(
-        decoration: baseBackgroundDecoration,
+        decoration: themeColor.baseBackgroundDecoration,
         width: double.infinity,
         height: MediaQuery.of(context).size.height,
         padding: EdgeInsets.symmetric(horizontal: 30, vertical: 50),

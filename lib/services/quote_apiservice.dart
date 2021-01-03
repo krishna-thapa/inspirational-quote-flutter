@@ -4,7 +4,6 @@ import 'package:inspirational_quote_flutter/exception/quote_exception.dart';
 import 'package:inspirational_quote_flutter/models/quote.dart';
 
 class QuoteService {
-
   Dio _dio;
 
   QuoteService() {
@@ -16,6 +15,9 @@ class QuoteService {
     _dio.interceptors.add(PrettyDioLogger());
   }
 
+  /*
+    Get the random quote from the database
+   */
   Future<Quote> getRandomQuote() async {
     final url = '/random';
     try {
@@ -27,6 +29,9 @@ class QuoteService {
     }
   }
 
+  /*
+    Get the quote of the day from the database
+   */
   Future<Quote> getQuoteOfTheDay() async {
     final url = '/quoteOfTheDay';
     try {
@@ -38,6 +43,9 @@ class QuoteService {
     }
   }
 
+  /*
+    Get ten random quotes from the database
+   */
   Future<List<Quote>> getTenRandomQuotes() async {
     final url = '/randomTen';
     try {

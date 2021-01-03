@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/all.dart';
 import 'package:inspirational_quote_flutter/animations/FadeAnimation.dart';
 import 'package:inspirational_quote_flutter/widgets/appbar_login.dart';
-import 'package:inspirational_quote_flutter/widgets/background_login.dart';
+import 'package:inspirational_quote_flutter/widgets/colors.dart';
 import 'package:inspirational_quote_flutter/widgets/heading_messages.dart';
 import 'package:inspirational_quote_flutter/widgets/colored_button.dart';
 import 'package:inspirational_quote_flutter/widgets/login_form.dart';
@@ -15,6 +16,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
+    final themeColor = useProvider(themeColorNotifierProvider);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: true,
@@ -23,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: double.infinity,
-        decoration: baseBackgroundDecoration,
+        decoration: themeColor.baseBackgroundDecoration,
         child: ListView(
           children: <Widget>[
             Expanded(
