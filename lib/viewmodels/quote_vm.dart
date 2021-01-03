@@ -11,29 +11,28 @@ final quoteProvider = ChangeNotifierProvider<QuoteViewModel>((ref) {
 
 class QuoteViewModel extends ChangeNotifier {
   QuoteViewModel() {
-    getQuote();
+    getRandomQuote();
   }
 
   QuotesRepository quotesRepository = new QuotesRepository();
   bool loading = false;
   bool error = false;
-  String errorMSg = "Something went wronsdg";
+  String errorMsg = "Something went wrong!";
   Quote quote;
 
-  Future<void> getQuote() async {
+  Future<void> getRandomQuote() async {
     loading = true;
     notifyListeners();
     try {
       final res = await quotesRepository.getQuote();
-      log("log outout ${res.author}");
       error = false;
       quote = res;
       loading = false;
       notifyListeners();
     } catch (e) {
-      log("log error ${e.toString()}");
+      log("log error while getting random quote: ${e.toString()}");
       error = true;
-      errorMSg = e.toString();
+      errorMsg = e.toString();
       loading = false;
       notifyListeners();
     }
