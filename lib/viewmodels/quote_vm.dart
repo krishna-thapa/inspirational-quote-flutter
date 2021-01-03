@@ -24,7 +24,7 @@ class QuoteViewModel extends ChangeNotifier {
     loading = true;
     notifyListeners();
     try {
-      final res = await quotesRepository.getQuote();
+      final res = await quotesRepository.getRandomQuote();
       error = false;
       quote = res;
       loading = false;

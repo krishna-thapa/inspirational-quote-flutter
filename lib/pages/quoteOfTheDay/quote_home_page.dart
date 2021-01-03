@@ -3,7 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/all.dart';
 import 'package:inspirational_quote_flutter/animations/FadeAnimation.dart';
 import 'package:inspirational_quote_flutter/pages/errorBody/error_response_body.dart';
-import 'package:inspirational_quote_flutter/pages/quote/quote_of_the_day.dart';
+import 'package:inspirational_quote_flutter/pages/quoteOfTheDay/quote_of_the_day.dart';
 import 'package:inspirational_quote_flutter/viewmodels/quote_vm.dart';
 import 'package:inspirational_quote_flutter/widgets/colors.dart';
 
