@@ -1,6 +1,7 @@
 # inspirational_quote_flutter
 
 A mobile application for inspirational quote project using flutter
+[Backend project with Scala and Play framework](https://github.com/krishna-thapa/Inspirational-quote-api)
 
 ## What it can offer for guest user
 1. Quote of the day page where user can share the screenshot to anyone 
@@ -18,7 +19,7 @@ A mobile application for inspirational quote project using flutter
 ## Dependencies used so far:
 - [flutter_hooks](https://pub.dev/packages/flutter_hooks)
 - [simple_animations](https://pub.dev/packages/simple_animations)
-- [flutter_riverpod](https://pub.dev/packages/flutter_riverpod) as state-managment tool
+- [flutter_riverpod](https://pub.dev/packages/flutter_riverpod) as state-management tool
 - [hooks_riverpod](https://pub.dev/packages/hooks_riverpod)
 - [dio](https://pub.dev/packages/dio) as http library
 - [pretty_dio_logger](https://pub.dev/packages/pretty_dio_logger)
