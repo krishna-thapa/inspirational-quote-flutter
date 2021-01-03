@@ -5,6 +5,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:inspirational_quote_flutter/models/quote.dart';
 import 'package:inspirational_quote_flutter/repository/quotes_repository.dart';
 
+final quoteProvider = ChangeNotifierProvider<QuoteViewModel>((ref) {
+  return QuoteViewModel();
+});
+
 class QuoteViewModel extends ChangeNotifier {
   QuoteViewModel() {
     getQuote();
@@ -13,8 +17,7 @@ class QuoteViewModel extends ChangeNotifier {
   QuotesRepository quotesRepository = new QuotesRepository();
   bool loading = false;
   bool error = false;
-  bool success = false;
-
+  String errorMSg = "Something went wronsdg";
   Quote quote;
 
   Future<void> getQuote() async {
@@ -23,19 +26,16 @@ class QuoteViewModel extends ChangeNotifier {
     try {
       final res = await quotesRepository.getQuote();
       log("log outout ${res.author}");
+      error = false;
       quote = res;
       loading = false;
       notifyListeners();
     } catch (e) {
       log("log error ${e.toString()}");
-      print(e.toString());
       error = true;
+      errorMSg = e.toString();
       loading = false;
       notifyListeners();
     }
   }
 }
-
-final quoteProvider = ChangeNotifierProvider<QuoteViewModel>((ref) {
-  return QuoteViewModel();
-});
