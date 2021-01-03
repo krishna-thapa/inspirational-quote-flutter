@@ -1,6 +1,7 @@
 # inspirational_quote_flutter
 
 A mobile application for inspirational quote project using flutter
+
 [Backend project with Scala and Play framework](https://github.com/krishna-thapa/Inspirational-quote-api)
 
 ## What it can offer for guest user
