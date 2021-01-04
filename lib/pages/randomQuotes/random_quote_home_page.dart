@@ -5,55 +5,66 @@ import 'package:hooks_riverpod/all.dart';
 import 'package:inspirational_quote_flutter/pages/errorBody/error_response_body.dart';
 import 'package:inspirational_quote_flutter/viewmodels/quote_vm.dart';
 import 'package:inspirational_quote_flutter/widgets/colors.dart';
+import 'package:share/share.dart';
 
-class RandomQuoteHomePage extends HookWidget {
+class RandomQuoteHomePage extends StatefulHookWidget {
+  @override
+  _RandomQuoteHomePageState createState() => _RandomQuoteHomePageState();
+}
+
+class _RandomQuoteHomePageState extends State<RandomQuoteHomePage> {
   @override
   Widget build(BuildContext context) {
     final QuoteViewModel quoteVm = useProvider(quoteProvider);
     final ThemeColor themeColor = useProvider(themeColorNotifierProvider);
-    final size = MediaQuery.of(context).size;
+    final size = MediaQuery
+        .of(context)
+        .size;
     return Container(
         decoration: themeColor.baseBackgroundDecoration,
         width: double.infinity,
-        height: MediaQuery.of(context).size.height,
+        height: MediaQuery
+            .of(context)
+            .size
+            .height,
         child: SafeArea(
           child: quoteVm.error
               ? ErrorBody(message: quoteVm.errorMsg)
               : Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 40, 10, 0),
+                child: Image.asset(
+                  'assets/images/quote.png',
+                  width: size.width * 0.5,
+                  alignment: Alignment.center,
+                ),
+              ),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 40, 10, 0),
-                      child: Image.asset(
-                        'assets/images/quote.png',
-                        width: size.width * 0.5,
-                        alignment: Alignment.center,
+                    SizedBox(
+                      height: 580.0,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10.0),
+                        child: quoteContent(quoteVm),
                       ),
                     ),
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            height: 580.0,
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 10.0),
-                              child: quoteContent(quoteVm),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 5.0),
-                            child: Opacity(
-                              opacity: .6,
-                              child: Text(
-                                "today's quote",
-                              ),
-                            ),
-                          ),
-                        ],
+                    Padding(
+                      padding: const EdgeInsets.only(top: 5.0),
+                      child: Opacity(
+                        opacity: .6,
+                        child: Text(
+                          "today's quote",
+                        ),
                       ),
                     ),
                   ],
                 ),
+              ),
+            ],
+          ),
         ));
   }
 
@@ -72,78 +83,78 @@ class RandomQuoteHomePage extends HookWidget {
         child: quoteVm.loading
             ? Center(child: CircularProgressIndicator())
             : Column(
-                children: [
-                  Expanded(
-                    child: Center(
-                      child: ListView(
-                        shrinkWrap: true,
-                        //mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: Center(
+                child: ListView(
+                  shrinkWrap: true,
+                  //mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/images/quote_symbol.png',
+                      alignment: Alignment.topLeft,
+                      height: 60,
+                      width: 60,
+                      color: Colors.black,
+                    ),
+                    Text(
+                      quoteVm.quote.quote,
+                      style: TextStyle(
+                          fontSize: 30.0, fontFamily: 'quoteScript'),
+                      softWrap: true,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
                         children: [
-                          Image.asset(
-                            'assets/images/quote_symbol.png',
-                            alignment: Alignment.topLeft,
-                            height: 60,
-                            width: 60,
-                            color: Colors.black,
-                          ),
-                          Text(
-                            quoteVm.quote.quote,
+                          TextSpan(
+                            text: "\u{270D} ",
                             style: TextStyle(
-                                fontSize: 30.0, fontFamily: 'quoteScript'),
-                            softWrap: true,
+                                fontSize: 40.0, color: Colors.black),
                           ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          RichText(
-                            textAlign: TextAlign.center,
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: "\u{270D} ",
-                                  style: TextStyle(
-                                      fontSize: 40.0, color: Colors.black),
-                                ),
-                                TextSpan(
-                                  text: quoteVm.quote.author,
-                                  style: TextStyle(
-                                      fontSize: 20.0,
-                                      fontFamily: 'quoteScript',
-                                      color: Colors.black),
-                                )
-                              ],
+                          TextSpan(
+                            text: quoteVm.quote.author,
+                            style: TextStyle(
+                                fontSize: 20.0,
+                                fontFamily: 'quoteScript',
+                                color: Colors.black),
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
+                        children: [
+                          WidgetSpan(
+                            child: FaIcon(
+                              FontAwesomeIcons.hashtag,
+                              size: 20,
                             ),
                           ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          RichText(
-                            textAlign: TextAlign.center,
-                            text: TextSpan(
-                              children: [
-                                WidgetSpan(
-                                  child: FaIcon(
-                                    FontAwesomeIcons.hashtag,
-                                    size: 20,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: " ${quoteVm.quote.genre}",
-                                  style: TextStyle(
-                                      fontSize: 20.0,
-                                      fontFamily: 'quoteScript',
-                                      color: Colors.black),
-                                ),
-                              ],
-                            ),
+                          TextSpan(
+                            text: " ${quoteVm.quote.genre}",
+                            style: TextStyle(
+                                fontSize: 20.0,
+                                fontFamily: 'quoteScript',
+                                color: Colors.black),
                           ),
                         ],
                       ),
                     ),
-                  ),
-                  actionIcons(quoteVm),
-                ],
+                  ],
+                ),
               ),
+            ),
+            actionIcons(quoteVm),
+          ],
+        ),
       ),
     );
   }
@@ -158,7 +169,7 @@ class RandomQuoteHomePage extends HookWidget {
             quoteVm.getRandomQuote();
           },
           child:
-              FaIcon(FontAwesomeIcons.syncAlt, size: 30, color: Colors.black),
+          FaIcon(FontAwesomeIcons.syncAlt, size: 30, color: Colors.black),
         ),
         InkWell(
           onTap: () {
@@ -169,9 +180,16 @@ class RandomQuoteHomePage extends HookWidget {
         InkWell(
           onTap: () {
             //final RenderBox box = context.findRenderObject();
+            final shareQuote = "${quoteVm.quote.quote} - ${quoteVm.quote
+                .author} #${quoteVm.quote.genre}";
+            Share.share(
+              shareQuote,
+              subject: "Quote to share",
+              //sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size
+            );
           },
           child:
-              FaIcon(FontAwesomeIcons.bullhorn, size: 30, color: Colors.black),
+          FaIcon(FontAwesomeIcons.bullhorn, size: 30, color: Colors.black),
         )
       ]),
     );
