@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/all.dart';
 
 import 'pages/login/login_home_page.dart';
@@ -47,17 +48,17 @@ class _HomePageState extends State<HomePage> {
             backgroundColor: themeColor.navigationBarBackground,
             items: [
               BottomNavigationBarItem(
-                icon: Icon(Icons.format_quote),
+                icon: FaIcon(FontAwesomeIcons.quoteLeft),
                 title: Text(
                   'Today',
                 ),
               ),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.shuffle), title: Text('Discover')),
+                  icon: FaIcon(FontAwesomeIcons.random), title: Text('Discover')),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.search), title: Text('Search')),
+                  icon: FaIcon(FontAwesomeIcons.search), title: Text('Search')),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.account_circle), title: Text('Account'))
+                  icon: FaIcon(FontAwesomeIcons.userCircle), title: Text('Account'))
             ],
             currentIndex: currentIndex,
             onTap: selectedPage,

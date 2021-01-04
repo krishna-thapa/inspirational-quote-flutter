@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/all.dart';
 import 'package:inspirational_quote_flutter/pages/errorBody/error_response_body.dart';
 import 'package:inspirational_quote_flutter/viewmodels/quote_vm.dart';
@@ -67,36 +68,78 @@ class RandomQuoteHomePage extends HookWidget {
             width: 5.0,
           )),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 50.0),
+        padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
         child: quoteVm.loading
             ? Center(child: CircularProgressIndicator())
             : Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset(
-                    'assets/images/quote_symbol.png',
-                    alignment: Alignment.topLeft,
-                    height: 60,
-                    width: 60,
-                    color: Colors.black,
-                  ),
-                  Text(
-                    quoteVm.quote.quote,
-                    style: TextStyle(fontSize: 30.0, fontFamily: 'quoteScript'),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    quoteVm.quote.author,
-                    style: TextStyle(fontSize: 20.0, fontFamily: 'quoteScript'),
-                  ),
-                  Text(
-                    quoteVm.quote.genre,
-                    style: TextStyle(fontSize: 20.0, fontFamily: 'quoteScript'),
-                  ),
-                  SizedBox(
-                    height: 10,
+                  Expanded(
+                    child: Center(
+                      child: ListView(
+                        shrinkWrap: true,
+                        //mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            'assets/images/quote_symbol.png',
+                            alignment: Alignment.topLeft,
+                            height: 60,
+                            width: 60,
+                            color: Colors.black,
+                          ),
+                          Text(
+                            quoteVm.quote.quote,
+                            style: TextStyle(
+                                fontSize: 30.0, fontFamily: 'quoteScript'),
+                            softWrap: true,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          RichText(
+                            textAlign: TextAlign.center,
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: "\u{270D} ",
+                                  style: TextStyle(
+                                      fontSize: 40.0, color: Colors.black),
+                                ),
+                                TextSpan(
+                                  text: quoteVm.quote.author,
+                                  style: TextStyle(
+                                      fontSize: 20.0,
+                                      fontFamily: 'quoteScript',
+                                      color: Colors.black),
+                                )
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          RichText(
+                            textAlign: TextAlign.center,
+                            text: TextSpan(
+                              children: [
+                                WidgetSpan(
+                                  child: FaIcon(
+                                    FontAwesomeIcons.hashtag,
+                                    size: 20,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: " ${quoteVm.quote.genre}",
+                                  style: TextStyle(
+                                      fontSize: 20.0,
+                                      fontFamily: 'quoteScript',
+                                      color: Colors.black),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                   actionIcons(quoteVm),
                 ],
@@ -107,32 +150,30 @@ class RandomQuoteHomePage extends HookWidget {
 
   Widget actionIcons(QuoteViewModel quoteVm) {
     return Padding(
-      padding: const EdgeInsets.all(10),
-      child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            InkWell(
-              onTap: () {
-                quoteVm.getRandomQuote();
-              },
-              child: Icon(Icons.refresh,
-                  size: 35, color: Colors.black),
-            ),
-            InkWell(
-              onTap: () {
-                // Add your onPressed code here!
-              },
-              child: Icon(Icons.favorite_border,
-                  size: 30, color: Colors.black),
-            ),
-            InkWell(
-              onTap: () {
-                // Add your onPressed code here!
-              },
-              child: Icon(Icons.share,
-                  size: 30, color: Colors.black),
-            )
-          ]),
+      padding: EdgeInsets.only(top: 20),
+      child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: <
+          Widget>[
+        InkWell(
+          onTap: () {
+            quoteVm.getRandomQuote();
+          },
+          child:
+              FaIcon(FontAwesomeIcons.syncAlt, size: 30, color: Colors.black),
+        ),
+        InkWell(
+          onTap: () {
+            // Add your onPressed code here!
+          },
+          child: FaIcon(FontAwesomeIcons.star, size: 30, color: Colors.black),
+        ),
+        InkWell(
+          onTap: () {
+            //final RenderBox box = context.findRenderObject();
+          },
+          child:
+              FaIcon(FontAwesomeIcons.bullhorn, size: 30, color: Colors.black),
+        )
+      ]),
     );
   }
 }
