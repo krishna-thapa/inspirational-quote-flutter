@@ -4,9 +4,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/all.dart';
 
 import 'env/globalVar.dart';
+import 'pages/homeQuote/quote_home_page.dart';
 import 'pages/login/login_home_page.dart';
-import 'pages/quoteOfTheDay/quote_home_page.dart';
-import 'pages/randomQuotes/random_quote_home_page.dart';
+import 'pages/randomQuote/random_quote_page.dart';
 import 'pages/searchQuote/search_quote_home_page.dart';
 import 'widgets/colors.dart';
 
@@ -23,7 +23,7 @@ class HomePage extends StatefulHookWidget {
 class _HomePageState extends State<HomePage> {
   static List<Widget> listScreens = <Widget>[
     QuoteHomePage(),
-    RandomQuoteHomePage(),
+    RandomQuotePage(),
     SearchQuoteHomePage(),
     LoginHomePage(),
   ];

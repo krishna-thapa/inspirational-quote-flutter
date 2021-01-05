@@ -1,31 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:inspirational_quote_flutter/viewmodels/quote_vm.dart';
 
-class QuoteOfTheDayPage extends StatefulWidget {
+class QuotePage extends StatefulWidget {
   final QuoteViewModel quote;
-
-  const QuoteOfTheDayPage(this.quote);
+  const QuotePage(this.quote);
 
   @override
-  _QuoteOfTheDayPageState createState() => _QuoteOfTheDayPageState();
+  _QuotePageState createState() => _QuotePageState();
 }
 
-class _QuoteOfTheDayPageState extends State<QuoteOfTheDayPage> {
+class _QuotePageState extends State<QuotePage> {
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Container(
       padding: EdgeInsets.only(left: 30, right: 30),
       child: widget.quote.loading
           ? Center(child: CircularProgressIndicator())
           : Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.asset(
-                  'assets/images/quote_of_the_day.png',
-                  width: size.width * 0.9,
-                ),
-                //Spacer(flex: 2,),
                 Expanded(
                   child: Center(
                     child: ListView(
