@@ -110,15 +110,17 @@ class _RandomQuoteHomePageState extends State<RandomQuoteHomePage> {
                       textAlign: TextAlign.center,
                       text: TextSpan(
                         children: [
-                          TextSpan(
-                            text: "\u{270D} ",
-                            style: TextStyle(
-                                fontSize: 40.0, color: Colors.black),
+                          WidgetSpan(
+                            child: FaIcon(
+                              FontAwesomeIcons.at,
+                              size: 20,
+                            ),
                           ),
                           TextSpan(
-                            text: quoteVm.quote.author,
+                            text: " ${quoteVm.quote.author}",
                             style: TextStyle(
                                 fontSize: 20.0,
+                                fontWeight: FontWeight.bold,
                                 fontFamily: 'quoteScript',
                                 color: Colors.black),
                           )

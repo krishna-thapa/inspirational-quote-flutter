@@ -15,8 +15,8 @@ class ThemeColor extends ChangeNotifier {
       )
   );
 
-  Color accent = Colors.black;
-  Color background = Colors.white54;
+  Color black = Colors.black;
+  Color white = Colors.white54;
 
   Color navigationBarBackground = Color(0xFF20B733);
 
