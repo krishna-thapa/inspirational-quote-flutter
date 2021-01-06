@@ -4,19 +4,19 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/all.dart';
 import 'package:inspirational_quote_flutter/animations/FadeAnimation.dart';
 import 'package:inspirational_quote_flutter/pages/errorBody/error_response_body.dart';
-import 'package:inspirational_quote_flutter/viewmodels/quote_vm.dart';
+import 'package:inspirational_quote_flutter/viewmodels/quoteOfDay_vm.dart';
 import 'package:inspirational_quote_flutter/widgets/actionIcons.dart';
 import 'package:inspirational_quote_flutter/widgets/colors.dart';
 
-class QuoteHomePage extends StatefulHookWidget {
-  @override
-  _QuoteHomePageState createState() => _QuoteHomePageState();
-}
+//class QuoteHomePage extends StatefulHookWidget {
+//  @override
+//  _QuoteHomePageState createState() => _QuoteHomePageState();
+//}
 
-class _QuoteHomePageState extends State<QuoteHomePage> {
+class QuoteHomePage extends HookWidget {
   @override
   Widget build(BuildContext context) {
-    final QuoteViewModel quoteVm = useProvider(quoteProvider);
+    final QuoteOfDayViewModel quoteVm = useProvider(quoteOfDayProvider);
     final ThemeColor themeColor = useProvider(themeColorNotifierProvider);
     final size = MediaQuery.of(context).size;
     return Container(
@@ -66,7 +66,7 @@ class _QuoteHomePageState extends State<QuoteHomePage> {
         ));
   }
 
-  Widget quoteContent(QuoteViewModel quoteVm) {
+  Widget quoteContent(QuoteOfDayViewModel quoteVm) {
     return Card(
       color: Colors.green[300],
       elevation: 6.0,
@@ -152,7 +152,7 @@ class _QuoteHomePageState extends State<QuoteHomePage> {
                       ),
                     ),
                   ),
-                  ActionIcons(),
+                  ActionIcons(true),
                 ],
               ),
       ),
