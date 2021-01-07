@@ -123,11 +123,9 @@ class _AnimateButtonState extends State<AnimateButton>
         return InkResponse(
           onTap: () {
             setState(() {
-              if (_isAnimationCompleted == true) {
-                _controller.reverse();
-              } else {
-                _controller.forward();
-              }
+              _isAnimationCompleted
+                  ? _controller.reverse()
+                  : _controller.forward();
             });
           },
           child: Icon(

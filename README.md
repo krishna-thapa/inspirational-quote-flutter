@@ -1,21 +1,21 @@
 # inspirational_quote_flutter
 
-A mobile application for inspirational quote project using flutter
+A mobile application for inspirational quote project using flutter.
 
 [Backend project with Scala and Play framework](https://github.com/krishna-thapa/Inspirational-quote-api)
 
 ## What it can offer for guest user
-1. Quote of the day page where user can share the screenshot to anyone 
-2. Discover screen page that shows the random quote where a user can refresh the quote and can share 
+1. Quote of the day page where a user can go through last five quotes of the day. They can share the quote in other social media.
+2. Discover screen page that shows the random quote where a user can refresh the quote and can share the quote 
 3. Search screen page user can search the quote with author name and can get a random quote with the selected genre of the quote
 4. Login page where any guest user can either login or signup for the new account
 
 ## What it can offer for logged in user
-1. Quote of the day page where a user can share and add the quote to the favourite quotes section by clicking like button
-2. Discover page where user can have access to unlimited random quote and can add to the favourite quotes
-3. Search page where user can search by an author, get quote by a genre and can also do advanced search by looking into quote text
-4. User account page that shows the user's favourite quotes where user can undo favourite quote
-5. Create quote page where user can create a new quote by adding genre and author(optional)  
+1. Quote of the day page where a user can share and add the quote to the favourite quotes section by clicking like button. They can view the last five quotes of the day.
+2. Discover page where user can have access to unlimited random quote and can add to the quote to personal quote table.
+3. Search page where user can search by an author, get quote by a genre and can also do advanced search by looking into quote text.
+4. User account page that shows the user's favourite quotes where user can undo a favourite quote.
+5. Create quote page where user can create a new quote by adding genre and author(optional). 
 
 ## Dependencies used so far:
 - [flutter_hooks](https://pub.dev/packages/flutter_hooks)
@@ -24,6 +24,8 @@ A mobile application for inspirational quote project using flutter
 - [hooks_riverpod](https://pub.dev/packages/hooks_riverpod)
 - [dio](https://pub.dev/packages/dio) as http library
 - [pretty_dio_logger](https://pub.dev/packages/pretty_dio_logger)
+- [font_awesome_flutter](https://pub.dev/packages/font_awesome_flutter)
+- [share](https://pub.dev/packages/share)
 
 ## Getting Started
 
