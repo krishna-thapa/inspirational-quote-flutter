@@ -37,7 +37,7 @@ class RandomQuotePage extends HookWidget {
                     Expanded(child: FadeAnimation(0.2, QuotePage(quoteVm))),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 50),
-                      child: FadeAnimation(0.3, ActionIcons(false)),
+                      child: FadeAnimation(0.3, ActionIcons(isQuoteOfDay: false,)),
                     )
                   ],
                 )),

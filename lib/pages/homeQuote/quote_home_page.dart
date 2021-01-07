@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/all.dart';
 import 'package:inspirational_quote_flutter/animations/FadeAnimation.dart';
 import 'package:inspirational_quote_flutter/pages/errorBody/error_response_body.dart';
+import 'package:inspirational_quote_flutter/pages/homeQuote/quote_card.dart';
 import 'package:inspirational_quote_flutter/viewmodels/quoteOfDay_vm.dart';
-import 'package:inspirational_quote_flutter/widgets/actionIcons.dart';
 import 'package:inspirational_quote_flutter/widgets/colors.dart';
 
 class QuoteHomePage extends HookWidget {
@@ -40,8 +39,8 @@ class QuoteHomePage extends HookWidget {
                           SizedBox(
                             height: 580.0,
                             child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 10.0),
-                              child: FadeAnimation(0.2, quoteContent(quoteVm)),
+                              padding: EdgeInsets.symmetric(horizontal: 2.0),
+                              child: FadeAnimation(0.2, QuoteCard()),
                             ),
                           ),
                           Padding(
@@ -59,97 +58,5 @@ class QuoteHomePage extends HookWidget {
                   ],
                 ),
         ));
-  }
-
-  Widget quoteContent(QuoteOfDayViewModel quoteVm) {
-    return Card(
-      color: Colors.green[300],
-      elevation: 6.0,
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4.0),
-          side: BorderSide(
-            color: Colors.teal,
-            width: 5.0,
-          )),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
-        child: quoteVm.loading
-            ? Center(child: CircularProgressIndicator())
-            : Column(
-                children: [
-                  Expanded(
-                    child: Center(
-                      child: ListView(
-                        shrinkWrap: true,
-                        children: [
-                          Image.asset(
-                            'assets/images/quote_symbol.png',
-                            alignment: Alignment.topLeft,
-                            height: 60,
-                            width: 60,
-                            color: Colors.black,
-                          ),
-                          Text(
-                            quoteVm.quote.quote,
-                            style: TextStyle(
-                                fontSize: 30.0, fontFamily: 'quoteScript'),
-                            softWrap: true,
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          RichText(
-                            textAlign: TextAlign.center,
-                            text: TextSpan(
-                              children: [
-                                WidgetSpan(
-                                  child: FaIcon(
-                                    FontAwesomeIcons.at,
-                                    size: 20,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: " ${quoteVm.quote.author}",
-                                  style: TextStyle(
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'quoteScript',
-                                      color: Colors.black),
-                                )
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          RichText(
-                            textAlign: TextAlign.center,
-                            text: TextSpan(
-                              children: [
-                                WidgetSpan(
-                                  child: FaIcon(
-                                    FontAwesomeIcons.hashtag,
-                                    size: 20,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: " ${quoteVm.quote.genre}",
-                                  style: TextStyle(
-                                      fontSize: 20.0,
-                                      fontFamily: 'quoteScript',
-                                      color: Colors.black),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  ActionIcons(true),
-                ],
-              ),
-      ),
-    );
   }
 }

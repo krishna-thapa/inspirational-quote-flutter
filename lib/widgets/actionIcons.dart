@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/all.dart';
 import 'package:inspirational_quote_flutter/env/globalVar.dart';
@@ -9,9 +10,10 @@ import 'package:share/share.dart';
 import 'animate_button.dart';
 
 class ActionIcons extends HookWidget {
-  ActionIcons(this.isQuoteOfDay);
+  const ActionIcons({this.isQuoteOfDay, this.swiperController});
 
   final bool isQuoteOfDay;
+  final SwiperController swiperController;
 
   @override
   Widget build(BuildContext context) {
@@ -62,22 +64,22 @@ class ActionIcons extends HookWidget {
   }
 
   Widget arrowRight() {
-    return InkWell(
-      onTap: () {
-        // Add your onPressed code here!
+    return AnimateButton(
+      iconToAdd: FontAwesomeIcons.handPointRight,
+      iconStartColor: Colors.black,
+      valueChanged: (_isFavorite) {
+        swiperController.next();
       },
-      child:
-          FaIcon(FontAwesomeIcons.handPointRight, size: 35, color: Colors.grey),
     );
   }
 
   Widget arrowLeft() {
-    return InkWell(
-      onTap: () {
-        // Add your onPressed code here!
+    return AnimateButton(
+      iconToAdd: FontAwesomeIcons.handPointLeft,
+      iconStartColor: Colors.black,
+      valueChanged: (_isFavorite) {
+        swiperController.previous();
       },
-      child:
-          FaIcon(FontAwesomeIcons.handPointLeft, size: 35, color: Colors.black),
     );
   }
 

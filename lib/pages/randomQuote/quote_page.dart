@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:inspirational_quote_flutter/animations/FadeAnimation.dart';
 import 'package:inspirational_quote_flutter/viewmodels/quote_vm.dart';
 
 class QuotePage extends StatefulWidget {
   final QuoteViewModel quote;
+
   const QuotePage(this.quote);
 
   @override
@@ -20,37 +22,40 @@ class _QuotePageState extends State<QuotePage> {
               children: [
                 Expanded(
                   child: Center(
-                    child: ListView(
-                      shrinkWrap: true,
-                      children: [
-                        Image.asset(
-                          'assets/images/quote_symbol.png',
-                          alignment: Alignment.centerLeft,
-                          height: 60,
-                          width: 60,
-                          color: Colors.black,
-                        ),
-                        Text(
-                          widget.quote.quote.quote,
-                          style: TextStyle(
-                              fontSize: 30.0, fontFamily: 'quoteScript'),
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        Text(
-                          widget.quote.quote.author,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'quoteScript'),
-                        ),
-                        Text(
-                          "#${widget.quote.quote.genre}",
-                          style: TextStyle(
-                              fontStyle: FontStyle.italic,
-                              fontFamily: 'quoteScript'),
-                        ),
-                      ],
+                    child: FadeAnimation(
+                      0.2,
+                      ListView(
+                        shrinkWrap: true,
+                        children: [
+                          Image.asset(
+                            'assets/images/quote_symbol.png',
+                            alignment: Alignment.centerLeft,
+                            height: 60,
+                            width: 60,
+                            color: Colors.black,
+                          ),
+                          Text(
+                            widget.quote.quote.quote,
+                            style: TextStyle(
+                                fontSize: 30.0, fontFamily: 'quoteScript'),
+                          ),
+                          SizedBox(
+                            height: 30,
+                          ),
+                          Text(
+                            widget.quote.quote.author,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'quoteScript'),
+                          ),
+                          Text(
+                            "#${widget.quote.quote.genre}",
+                            style: TextStyle(
+                                fontStyle: FontStyle.italic,
+                                fontFamily: 'quoteScript'),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
