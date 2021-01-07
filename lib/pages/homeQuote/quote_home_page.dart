@@ -8,11 +8,6 @@ import 'package:inspirational_quote_flutter/viewmodels/quoteOfDay_vm.dart';
 import 'package:inspirational_quote_flutter/widgets/actionIcons.dart';
 import 'package:inspirational_quote_flutter/widgets/colors.dart';
 
-//class QuoteHomePage extends StatefulHookWidget {
-//  @override
-//  _QuoteHomePageState createState() => _QuoteHomePageState();
-//}
-
 class QuoteHomePage extends HookWidget {
   @override
   Widget build(BuildContext context) {
@@ -86,7 +81,6 @@ class QuoteHomePage extends HookWidget {
                     child: Center(
                       child: ListView(
                         shrinkWrap: true,
-                        //mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(
                             'assets/images/quote_symbol.png',
