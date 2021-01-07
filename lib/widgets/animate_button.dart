@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // Source: https://pub.dev/packages/favorite_button
 
@@ -12,11 +13,11 @@ class AnimateButton extends StatefulWidget {
     IconData iconToAdd,
     @required Function valueChanged,
     Key key,
-  })  : _iconSize = iconSize ?? 70.0,
+  })  : _iconSize = iconSize ?? 40.0,
         _iconStartColor = iconStartColor ?? Colors.black12,
         _iconColor = iconColor ?? Colors.black,
         _isFavorite = isFavorite ?? false,
-        _iconToAdd = iconToAdd ?? Icons.favorite,
+        _iconToAdd = iconToAdd ?? FontAwesomeIcons.solidHeart,
         _valueChanged = valueChanged,
         super(key: key);
 
@@ -55,7 +56,7 @@ class _AnimateButtonState extends State<AnimateButton>
     _maxIconSize = (widget._iconSize < 20.0)
         ? 20.0
         : (widget._iconSize > 100.0) ? 100.0 : widget._iconSize;
-    final double _sizeDifference = _maxIconSize * 0.30;
+    final double _sizeDifference = _maxIconSize * 0.20;
     _minIconSize = _maxIconSize - _sizeDifference;
 
     _controller = AnimationController(
@@ -109,6 +110,7 @@ class _AnimateButtonState extends State<AnimateButton>
     });
   }
 
+  // dismiss the animation when widgit exits screen
   @override
   void dispose() {
     super.dispose();

@@ -35,33 +35,29 @@ class ActionIcons extends HookWidget {
   }
 
   Widget refresh(QuoteViewModel quoteVm) {
-    return InkWell(
-      onTap: () {
+    return AnimateButton(
+      iconToAdd: FontAwesomeIcons.syncAlt,
+      iconStartColor: Colors.black,
+      valueChanged: (_isFavorite) {
         quoteVm.getRandomQuote();
       },
-      child: FaIcon(FontAwesomeIcons.syncAlt, size: 30, color: Colors.black),
     );
   }
 
   Widget addQuote(BuildContext context) {
-    return Material(
-      color: Colors.white.withOpacity(0.0),
-      child: InkWell(
-        customBorder: new CircleBorder(),
-        splashColor: Colors.grey[700],
-        onTap: () {
-          Scaffold.of(context).showSnackBar(SnackBar(
-            behavior: SnackBarBehavior.floating,
-            elevation: 2,
-            content: Text('Quote is added!', style: TextStyle(fontSize: 15)),
-            duration: Duration(seconds: 1),
-          ));
-        },
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Icon(Icons.playlist_add, size: 45, color: Colors.black),
-        ),
-      ),
+    return AnimateButton(
+      iconToAdd: Icons.playlist_add,
+      iconSize: 60,
+      valueChanged: (_isFavorite) {
+        Scaffold.of(context).showSnackBar(SnackBar(
+          behavior: SnackBarBehavior.floating,
+          elevation: 2,
+          content: _isFavorite
+              ? Text('Quote is added!', style: TextStyle(fontSize: 15))
+              : Text('Quote is removed!', style: TextStyle(fontSize: 15)),
+          duration: Duration(seconds: 1),
+        ));
+      },
     );
   }
 
@@ -86,8 +82,10 @@ class ActionIcons extends HookWidget {
   }
 
   Widget share(QuoteViewModel quoteVm) {
-    return InkWell(
-      onTap: () {
+    return AnimateButton(
+      iconToAdd: FontAwesomeIcons.bullhorn,
+      iconStartColor: Colors.black,
+      valueChanged: (_isFavorite) {
         final shareQuote =
             "${quoteVm.quote.quote} - ${quoteVm.quote.author} #${quoteVm.quote.genre}";
         Share.share(
@@ -95,7 +93,6 @@ class ActionIcons extends HookWidget {
           subject: "Quote to share",
         );
       },
-      child: FaIcon(FontAwesomeIcons.bullhorn, size: 30, color: Colors.black),
     );
   }
 
