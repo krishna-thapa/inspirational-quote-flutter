@@ -20,7 +20,6 @@ class _QuoteCardState extends State<QuoteCard> {
     return Swiper(
         itemHeight: MediaQuery.of(context).size.height - 80.0,
         itemWidth: MediaQuery.of(context).size.width - 40.0,
-        loop: false,
         itemCount: 3,
         layout: SwiperLayout.STACK,
         controller: _controller,
@@ -97,7 +96,7 @@ class _QuoteCardState extends State<QuoteCard> {
                                         ),
                                       ),
                                       TextSpan(
-                                        text: " ${quoteVm.quote.genre}",
+                                        text: " ${quoteVm.quote.genre} $index",
                                         style: TextStyle(
                                             fontSize: 20.0,
                                             fontFamily: 'quoteScript',
