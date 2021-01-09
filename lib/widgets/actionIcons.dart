@@ -67,6 +67,7 @@ class ActionIcons extends HookWidget {
     return AnimateButton(
       iconToAdd: FontAwesomeIcons.handPointRight,
       iconStartColor: Colors.black,
+      animationTime: Duration(milliseconds: 100),
       valueChanged: (_isFavorite) {
         swiperController.next();
       },
@@ -77,6 +78,7 @@ class ActionIcons extends HookWidget {
     return AnimateButton(
       iconToAdd: FontAwesomeIcons.handPointLeft,
       iconStartColor: Colors.black,
+      animationTime: Duration(milliseconds: 100),
       valueChanged: (_isFavorite) {
         swiperController.previous();
       },

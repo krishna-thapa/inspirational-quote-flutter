@@ -11,6 +11,7 @@ class AnimateButton extends StatefulWidget {
     Color iconColor,
     bool isFavorite,
     IconData iconToAdd,
+    Duration animationTime,
     @required Function valueChanged,
     Key key,
   })  : _iconSize = iconSize ?? 40.0,
@@ -18,6 +19,7 @@ class AnimateButton extends StatefulWidget {
         _iconColor = iconColor ?? Colors.black,
         _isFavorite = isFavorite ?? false,
         _iconToAdd = iconToAdd ?? FontAwesomeIcons.solidHeart,
+        _animationTime = animationTime ?? Duration(milliseconds: 300),
         _valueChanged = valueChanged,
         super(key: key);
 
@@ -26,6 +28,7 @@ class AnimateButton extends StatefulWidget {
   final Color _iconColor;
   final bool _isFavorite;
   final IconData _iconToAdd;
+  final Duration _animationTime;
   final Function _valueChanged;
 
   @override
@@ -43,8 +46,6 @@ class _AnimateButtonState extends State<AnimateButton>
   double _maxIconSize = 0.0;
   double _minIconSize = 0.0;
 
-  final int _animationTime = 400;
-
   bool _isFavorite = false;
   bool _isAnimationCompleted = false;
 
@@ -61,7 +62,7 @@ class _AnimateButtonState extends State<AnimateButton>
 
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: _animationTime),
+      duration: widget._animationTime,
     );
 
     _curve = CurvedAnimation(curve: Curves.slowMiddle, parent: _controller);
