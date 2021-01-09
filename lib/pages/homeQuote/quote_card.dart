@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/all.dart';
+import 'package:inspirational_quote_flutter/pages/shared/quote-text.dart';
 import 'package:inspirational_quote_flutter/viewmodels/quoteOfDay_vm.dart';
 import 'package:inspirational_quote_flutter/widgets/actionIcons.dart';
 
@@ -41,73 +41,10 @@ class _QuoteCardState extends State<QuoteCard> {
                       children: [
                         Expanded(
                           child: Center(
-                            child: ListView(
-                              shrinkWrap: true,
-                              children: [
-                                Image.asset(
-                                  'assets/images/quote_symbol.png',
-                                  alignment: Alignment.topLeft,
-                                  height: 60,
-                                  width: 60,
-                                  color: Colors.black,
-                                ),
-                                Text(
-                                  quoteVm.quote.quote,
-                                  style: TextStyle(
-                                      fontSize: 30.0,
-                                      fontFamily: 'quoteScript'),
-                                  softWrap: true,
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                RichText(
-                                  textAlign: TextAlign.center,
-                                  text: TextSpan(
-                                    children: [
-                                      WidgetSpan(
-                                        child: FaIcon(
-                                          FontAwesomeIcons.at,
-                                          size: 20,
-                                        ),
-                                      ),
-                                      TextSpan(
-                                        text: " ${quoteVm.quote.author}",
-                                        style: TextStyle(
-                                            fontSize: 20.0,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: 'quoteScript',
-                                            color: Colors.black),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                RichText(
-                                  textAlign: TextAlign.center,
-                                  text: TextSpan(
-                                    children: [
-                                      WidgetSpan(
-                                        child: FaIcon(
-                                          FontAwesomeIcons.hashtag,
-                                          size: 20,
-                                        ),
-                                      ),
-                                      TextSpan(
-                                        text: " ${quoteVm.quote.genre} $index",
-                                        style: TextStyle(
-                                            fontSize: 20.0,
-                                            fontFamily: 'quoteScript',
-                                            color: Colors.black),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
+                              child: QuoteInText(
+                            quote: quoteVm.quote,
+                            isQuoteOfDay: true,
+                          )),
                         ),
                         ActionIcons(
                           isQuoteOfDay: true,

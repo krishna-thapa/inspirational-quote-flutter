@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inspirational_quote_flutter/animations/FadeAnimation.dart';
+import 'package:inspirational_quote_flutter/pages/shared/quote-text.dart';
 import 'package:inspirational_quote_flutter/viewmodels/quote_vm.dart';
 
 class QuotePage extends StatefulWidget {
@@ -24,38 +25,10 @@ class _QuotePageState extends State<QuotePage> {
                   child: Center(
                     child: FadeAnimation(
                       0.2,
-                      ListView(
-                        shrinkWrap: true,
-                        children: [
-                          Image.asset(
-                            'assets/images/quote_symbol.png',
-                            alignment: Alignment.centerLeft,
-                            height: 60,
-                            width: 60,
-                            color: Colors.black,
-                          ),
-                          Text(
-                            widget.quote.quote.quote,
-                            style: TextStyle(
-                                fontSize: 30.0, fontFamily: 'quoteScript'),
-                          ),
-                          SizedBox(
-                            height: 30,
-                          ),
-                          Text(
-                            widget.quote.quote.author,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'quoteScript'),
-                          ),
-                          Text(
-                            "#${widget.quote.quote.genre}",
-                            style: TextStyle(
-                                fontStyle: FontStyle.italic,
-                                fontFamily: 'quoteScript'),
-                          ),
-                        ],
-                      ),
+                        QuoteInText(
+                          quote: widget.quote.quote,
+                          isQuoteOfDay: false,
+                        )
                     ),
                   ),
                 ),
