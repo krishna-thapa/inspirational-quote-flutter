@@ -10,7 +10,8 @@ import 'package:inspirational_quote_flutter/widgets/colors.dart';
 class QuoteHomePage extends HookWidget {
   @override
   Widget build(BuildContext context) {
-    final QuotesOfDayViewModel allQuotesOfDay = useProvider(quotesOfDayProvider);
+    final QuotesOfDayViewModel allQuotesOfDay =
+        useProvider(quotesOfDayProvider);
     final ThemeColor themeColor = useProvider(themeColorNotifierProvider);
     final size = MediaQuery.of(context).size;
     return Container(
@@ -19,7 +20,7 @@ class QuoteHomePage extends HookWidget {
         height: MediaQuery.of(context).size.height,
         child: SafeArea(
           child: allQuotesOfDay.error
-              ? ErrorBody(message: allQuotesOfDay.errorMsg)
+              ? ErrorBody(isQuoteOfDay: true, message: allQuotesOfDay.errorMsg)
               : Column(
                   children: [
                     FadeAnimation(

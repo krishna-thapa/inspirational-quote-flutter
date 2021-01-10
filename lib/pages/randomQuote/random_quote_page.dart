@@ -21,7 +21,7 @@ class RandomQuotePage extends HookWidget {
       height: MediaQuery.of(context).size.height,
       child: SafeArea(
           child: randomQuote.error
-              ? ErrorBody(message: randomQuote.errorMsg)
+              ? ErrorBody(isQuoteOfDay: false, message: randomQuote.errorMsg)
               : Column(
                   children: [
                     SizedBox(

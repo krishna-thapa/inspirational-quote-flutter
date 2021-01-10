@@ -11,7 +11,3 @@ _AnimateButtonState created a Ticker via its TickerProviderStateMixin, but at th
 
 
 https://medium.com/flutter-community/parsing-complex-json-in-flutter-747c46655f51
-
-0 1 2 3 0 1 2 3 4 5  
-
-0 3 2 1 0 5 4 3 2 1

@@ -25,16 +25,19 @@ class QuotesOfDayViewModel extends ChangeNotifier {
     notifyListeners();
     try {
       final List<AllQuotesOfDay> res =
-          await quotesRepository.getAllQuotesOfDay();
+      await quotesRepository.getAllQuotesOfDay();
       error = false;
       // Sorting the list with content date in descending order
-      // TODO test this what if res is null
-      if (res.length > 1)
+      if (res.length > 1) {
         res.sort((a, b) {
           var aDate = a.contentDate;
           var bDate = b.contentDate;
-          return -aDate.compareTo(bDate);
+          return aDate.compareTo(bDate);
         });
+        // Rearranging the order for the Swiper widget
+        res.insert(0, res.last);
+        res.removeLast();
+      }
       quote = res;
       loading = false;
       notifyListeners();

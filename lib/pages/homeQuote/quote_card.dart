@@ -26,6 +26,7 @@ class _QuoteCardState extends State<QuoteCard> {
             itemWidth: MediaQuery.of(context).size.width - 40.0,
             itemCount: allQuotesOfDay.quote.length,
             layout: SwiperLayout.STACK,
+            loop: false,
             controller: _controller,
             itemBuilder: (BuildContext context, int index) {
               final Quote quote = allQuotesOfDay.quote.elementAt(index).quote;

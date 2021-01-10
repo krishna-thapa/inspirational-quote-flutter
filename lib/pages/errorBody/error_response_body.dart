@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:inspirational_quote_flutter/viewmodels/quotesOfDay_vm.dart';
 import 'package:inspirational_quote_flutter/viewmodels/random_quote_vm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ErrorBody extends HookWidget {
   final QuoteViewModel randomQuote = useProvider(randomQuoteProvider);
+  final QuotesOfDayViewModel quotesOfDay = useProvider(quotesOfDayProvider);
 
   ErrorBody({
     Key key,
+    @required this.isQuoteOfDay,
     @required this.message,
-  })  : assert(message != null, 'A non-null String must be provided'),
+  })
+      : assert(message != null, 'A non-null String must be provided'),
         super(key: key);
 
   final String message;
+  final bool isQuoteOfDay;
 
   //TODO : Make use of Login button
   @override
@@ -42,7 +47,10 @@ class ErrorBody extends HookWidget {
             child: MaterialButton(
               minWidth: double.infinity,
               height: 60,
-              onPressed: () => (randomQuote.getRandomQuoteVM()),
+              onPressed: () =>
+              isQuoteOfDay
+                  ? quotesOfDay.getAllQuotesOfDayVM()
+                  : randomQuote.getRandomQuoteVM(),
               color: Colors.teal,
               elevation: 0,
               shape: RoundedRectangleBorder(
