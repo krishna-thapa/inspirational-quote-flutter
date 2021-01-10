@@ -27,7 +27,7 @@ class _LoginHomePageState extends State<LoginHomePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             HeadingMessages("Welcome", "Login to see the Wonderland"),
-            FadeAnimation(1.3, Container(
+            FadeAnimation(0.4, Container(
               height: MediaQuery.of(context).size.height / 2,
               decoration: BoxDecoration(
                 image: DecorationImage(

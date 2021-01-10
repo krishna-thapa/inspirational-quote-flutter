@@ -14,7 +14,7 @@ class ColoredButton extends StatefulWidget {
 class _ColoredButtonState extends State<ColoredButton> {
   @override
   Widget build(BuildContext context) {
-    return FadeAnimation(1.4, Container(
+    return FadeAnimation(0.2, Container(
       padding: EdgeInsets.only(top: 3, left: 3),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),

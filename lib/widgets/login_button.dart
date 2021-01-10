@@ -10,7 +10,7 @@ class LoginButton extends StatefulWidget {
   class _LoginButtonState extends State<LoginButton> {
     @override
     Widget build(BuildContext context) {
-      return FadeAnimation(1.5, MaterialButton(
+      return FadeAnimation(0.2, MaterialButton(
         minWidth: double.infinity,
         height: 60,
         onPressed: () {

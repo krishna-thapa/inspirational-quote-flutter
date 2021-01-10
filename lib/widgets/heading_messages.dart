@@ -15,12 +15,12 @@ class _HeadingMessagesState extends State<HeadingMessages> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        FadeAnimation(1, Text(widget.heading1, style: TextStyle(
+        FadeAnimation(0.4, Text(widget.heading1, style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 30
         ),)),
         SizedBox(height: 20,),
-        FadeAnimation(1.2, Text(widget.heading2,
+        FadeAnimation(0.4, Text(widget.heading2,
           textAlign: TextAlign.center,
           style: TextStyle(
               color: Colors.grey[700],
