@@ -12,6 +12,8 @@ class AllQuotesOfDay {
 
   factory AllQuotesOfDay.fromJson(Map<String, dynamic> json) {
     return AllQuotesOfDay(
-        id: json['id'], contentDate: json['csvid'], quote: json['quote']);
+        id: json['id'],
+        contentDate: json['contentDate'],
+        quote: Quote.fromJson(json['quote']));
   }
 }

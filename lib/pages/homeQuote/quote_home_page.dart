@@ -4,13 +4,13 @@ import 'package:hooks_riverpod/all.dart';
 import 'package:inspirational_quote_flutter/animations/FadeAnimation.dart';
 import 'package:inspirational_quote_flutter/pages/errorBody/error_response_body.dart';
 import 'package:inspirational_quote_flutter/pages/homeQuote/quote_card.dart';
-import 'package:inspirational_quote_flutter/viewmodels/quoteOfDay_vm.dart';
+import 'package:inspirational_quote_flutter/viewmodels/quotesOfDay_vm.dart';
 import 'package:inspirational_quote_flutter/widgets/colors.dart';
 
 class QuoteHomePage extends HookWidget {
   @override
   Widget build(BuildContext context) {
-    final QuoteOfDayViewModel quoteVm = useProvider(quoteOfDayProvider);
+    final QuotesOfDayViewModel allQuotesOfDay = useProvider(quotesOfDayProvider);
     final ThemeColor themeColor = useProvider(themeColorNotifierProvider);
     final size = MediaQuery.of(context).size;
     return Container(
@@ -18,8 +18,8 @@ class QuoteHomePage extends HookWidget {
         width: double.infinity,
         height: MediaQuery.of(context).size.height,
         child: SafeArea(
-          child: quoteVm.error
-              ? ErrorBody(message: quoteVm.errorMsg)
+          child: allQuotesOfDay.error
+              ? ErrorBody(message: allQuotesOfDay.errorMsg)
               : Column(
                   children: [
                     FadeAnimation(

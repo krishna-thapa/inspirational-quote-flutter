@@ -92,7 +92,8 @@ class ActionIcons extends HookWidget {
       iconToAdd: FontAwesomeIcons.bullhorn,
       iconStartColor: Colors.black,
       valueChanged: (_isFavorite) {
-        final shareQuote = "${quote.quote} - ${quote.author} #${quote.genre}";
+        final shareQuote =
+            "${quote.quote ?? "No quote"} - ${quote.author ?? "No author"} #${quote.genre ?? "No genre"}";
         Share.share(
           shareQuote,
           subject: "Quote to share",
