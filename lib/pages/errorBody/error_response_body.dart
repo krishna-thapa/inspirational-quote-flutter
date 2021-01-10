@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:inspirational_quote_flutter/viewmodels/quote_vm.dart';
+import 'package:inspirational_quote_flutter/viewmodels/random_quote_vm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ErrorBody extends HookWidget {
-  final QuoteViewModel quoteVm = useProvider(quoteProvider);
+  final QuoteViewModel randomQuote = useProvider(randomQuoteProvider);
 
   ErrorBody({
     Key key,
@@ -42,7 +42,7 @@ class ErrorBody extends HookWidget {
             child: MaterialButton(
               minWidth: double.infinity,
               height: 60,
-              onPressed: () => (quoteVm.getRandomQuote()),
+              onPressed: () => (randomQuote.getRandomQuoteVM()),
               color: Colors.teal,
               elevation: 0,
               shape: RoundedRectangleBorder(

@@ -1,6 +1,6 @@
-  List<Quote> quotesModelFromJson(List<dynamic> str) =>
+List<Quote> quotesModelFromJson(List<dynamic> str) =>
     List<Quote>.from(str.map((x) => Quote.fromJson(x)));
-    
+
 class Quote {
   final int id;
   final String csvId;
@@ -14,11 +14,10 @@ class Quote {
   // How to catch error here? When it can't parse to the json?
   factory Quote.fromJson(Map<String, dynamic> json) {
     return Quote(
-      id: json['id'],
-      csvId: json['csvid'],
-      quote: json['quote'],
-      author: json['author'],
-      genre: json['genre']
-    );
+        id: json['id'],
+        csvId: json['csvid'],
+        quote: json['quote'],
+        author: json['author'],
+        genre: json['genre']);
   }
 }

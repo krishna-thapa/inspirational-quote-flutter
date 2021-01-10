@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:inspirational_quote_flutter/models/all_quotes_of_day.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:inspirational_quote_flutter/exception/quote_exception.dart';
 import 'package:inspirational_quote_flutter/models/quote.dart';
@@ -31,6 +32,7 @@ class QuoteService {
 
   /*
     Get the quote of the day from the database
+    TODO: Delete in the future
    */
   Future<Quote> getQuoteOfTheDay() async {
     final url = '/quoteOfTheDay';
@@ -44,13 +46,14 @@ class QuoteService {
   }
 
   /*
-    Get ten random quotes from the database
+    Get all Redis stored quote of the day
+    Maximum would be last 5 quotes of the day
    */
-  Future<List<Quote>> getTenRandomQuotes() async {
-    final url = '/randomTen';
+  Future<List<AllQuotesOfDay>> getAllQuotesOfDay() async {
+    final url = '/quotesOfTheDay';
     try {
       final response = await _dio.get(url);
-      List<Quote> result = quotesModelFromJson(response.data);
+      List<AllQuotesOfDay> result = allQuotesModelFromJson(response.data);
       return result;
     } on DioError catch (dioError) {
       throw QuoteException.fromDioError(dioError);

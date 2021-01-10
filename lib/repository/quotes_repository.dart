@@ -1,3 +1,4 @@
+import 'package:inspirational_quote_flutter/models/all_quotes_of_day.dart';
 import 'package:inspirational_quote_flutter/models/quote.dart';
 import 'package:inspirational_quote_flutter/services/quote_apiservice.dart';
 
@@ -12,7 +13,7 @@ class QuotesRepository {
     return await quoteService.getQuoteOfTheDay();
   }
 
-  Future<List<Quote>> getTenRandomQuotes() async {
-    return await quoteService.getTenRandomQuotes();
+  Future<List<AllQuotesOfDay>> getAllQuotesOfDay() async {
+    return await quoteService.getAllQuotesOfDay();
   }
 }

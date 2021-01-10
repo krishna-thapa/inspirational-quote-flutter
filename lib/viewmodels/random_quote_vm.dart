@@ -5,13 +5,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:inspirational_quote_flutter/models/quote.dart';
 import 'package:inspirational_quote_flutter/repository/quotes_repository.dart';
 
-final quoteOfDayProvider = ChangeNotifierProvider<QuoteOfDayViewModel>((ref) {
-  return QuoteOfDayViewModel();
+final randomQuoteProvider = ChangeNotifierProvider<QuoteViewModel>((ref) {
+  return QuoteViewModel();
 });
 
-class QuoteOfDayViewModel extends ChangeNotifier {
-  QuoteOfDayViewModel() {
-    getQuoteOfTheDayVM();
+class QuoteViewModel extends ChangeNotifier {
+  QuoteViewModel() {
+    getRandomQuoteVM();
   }
 
   QuotesRepository quotesRepository = new QuotesRepository();
@@ -20,11 +20,11 @@ class QuoteOfDayViewModel extends ChangeNotifier {
   String errorMsg = "Something went wrong!";
   Quote quote;
 
-  Future<void> getQuoteOfTheDayVM() async {
+  Future<void> getRandomQuoteVM() async {
     loading = true;
     notifyListeners();
     try {
-      final Quote res = await quotesRepository.getQuoteOfTheDay();
+      final Quote res = await quotesRepository.getRandomQuote();
       error = false;
       quote = res;
       loading = false;

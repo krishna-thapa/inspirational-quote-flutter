@@ -4,33 +4,35 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/all.dart';
 import 'package:inspirational_quote_flutter/env/globalVar.dart';
-import 'package:inspirational_quote_flutter/viewmodels/quote_vm.dart';
+import 'package:inspirational_quote_flutter/models/quote.dart';
+import 'package:inspirational_quote_flutter/viewmodels/random_quote_vm.dart';
 import 'package:share/share.dart';
 
 import 'animate_button.dart';
 
 class ActionIcons extends HookWidget {
-  const ActionIcons({this.isQuoteOfDay, this.swiperController});
+  const ActionIcons({this.isQuoteOfDay, this.quote, this.swiperController});
 
   final bool isQuoteOfDay;
+  final Quote quote;
   final SwiperController swiperController;
 
   @override
   Widget build(BuildContext context) {
-    final QuoteViewModel quoteVm = useProvider(quoteProvider);
+    final QuoteViewModel randomQuoteVm = useProvider(randomQuoteProvider);
     final GlobalVar globalVar = useProvider(globalVarNotifierProvider);
     return Padding(
       padding: EdgeInsets.only(top: 20),
       child: !isQuoteOfDay
           ? Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-              refresh(quoteVm),
+              refresh(randomQuoteVm),
               addQuote(context),
-              share(quoteVm),
+              share(quote),
             ])
           : Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               arrowLeft(),
               likeQuote(globalVar),
-              share(quoteVm),
+              share(quote),
               arrowRight()
             ]),
     );
@@ -41,7 +43,7 @@ class ActionIcons extends HookWidget {
       iconToAdd: FontAwesomeIcons.syncAlt,
       iconStartColor: Colors.black,
       valueChanged: (_isFavorite) {
-        quoteVm.getRandomQuote();
+        quoteVm.getRandomQuoteVM();
       },
     );
   }
@@ -67,7 +69,7 @@ class ActionIcons extends HookWidget {
     return AnimateButton(
       iconToAdd: FontAwesomeIcons.handPointRight,
       iconStartColor: Colors.black,
-      animationTime: Duration(milliseconds: 100),
+      animationTime: Duration(milliseconds: 0),
       valueChanged: (_isFavorite) {
         swiperController.next();
       },
@@ -78,20 +80,19 @@ class ActionIcons extends HookWidget {
     return AnimateButton(
       iconToAdd: FontAwesomeIcons.handPointLeft,
       iconStartColor: Colors.black,
-      animationTime: Duration(milliseconds: 100),
+      animationTime: Duration(milliseconds: 0),
       valueChanged: (_isFavorite) {
         swiperController.previous();
       },
     );
   }
 
-  Widget share(QuoteViewModel quoteVm) {
+  Widget share(Quote quoteVm) {
     return AnimateButton(
       iconToAdd: FontAwesomeIcons.bullhorn,
       iconStartColor: Colors.black,
       valueChanged: (_isFavorite) {
-        final shareQuote =
-            "${quoteVm.quote.quote} - ${quoteVm.quote.author} #${quoteVm.quote.genre}";
+        final shareQuote = "${quote.quote} - ${quote.author} #${quote.genre}";
         Share.share(
           shareQuote,
           subject: "Quote to share",

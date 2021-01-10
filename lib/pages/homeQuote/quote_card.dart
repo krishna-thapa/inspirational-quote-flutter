@@ -16,7 +16,7 @@ class _QuoteCardState extends State<QuoteCard> {
 
   @override
   Widget build(BuildContext context) {
-    final QuoteOfDayViewModel quoteVm = useProvider(quoteOfDayProvider);
+    final QuoteOfDayViewModel quoteOfTheDay = useProvider(quoteOfDayProvider);
     return Swiper(
         itemHeight: MediaQuery.of(context).size.height - 80.0,
         itemWidth: MediaQuery.of(context).size.width - 40.0,
@@ -35,18 +35,19 @@ class _QuoteCardState extends State<QuoteCard> {
                 )),
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
-              child: quoteVm.loading
+              child: quoteOfTheDay.loading
                   ? Center(child: CircularProgressIndicator())
                   : Column(
                       children: [
                         Expanded(
                           child: Center(
                               child: QuoteInText(
-                            quote: quoteVm.quote,
+                            quote: quoteOfTheDay.quote,
                             isQuoteOfDay: true,
                           )),
                         ),
                         ActionIcons(
+                          quote: quoteOfTheDay.quote,
                           isQuoteOfDay: true,
                           swiperController: _controller,
                         ),

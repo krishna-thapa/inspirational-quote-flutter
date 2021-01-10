@@ -32,6 +32,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final ThemeColor themeColor = useProvider(themeColorNotifierProvider);
     final GlobalVar globalVar = useProvider(globalVarNotifierProvider);
+
     return MaterialApp(
         title: 'Inspirational quote',
         debugShowCheckedModeBanner: false,

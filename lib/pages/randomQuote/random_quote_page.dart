@@ -3,7 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/all.dart';
 import 'package:inspirational_quote_flutter/animations/FadeAnimation.dart';
 import 'package:inspirational_quote_flutter/pages/errorBody/error_response_body.dart';
-import 'package:inspirational_quote_flutter/viewmodels/quote_vm.dart';
+import 'package:inspirational_quote_flutter/viewmodels/random_quote_vm.dart';
 import 'package:inspirational_quote_flutter/widgets/actionIcons.dart';
 import 'package:inspirational_quote_flutter/widgets/colors.dart';
 
@@ -12,7 +12,7 @@ import 'quote_page.dart';
 class RandomQuotePage extends HookWidget {
   @override
   Widget build(BuildContext context) {
-    final QuoteViewModel quoteVm = useProvider(quoteProvider);
+    final QuoteViewModel randomQuote = useProvider(randomQuoteProvider);
     final ThemeColor themeColor = useProvider(themeColorNotifierProvider);
     final size = MediaQuery.of(context).size;
     return Container(
@@ -20,8 +20,8 @@ class RandomQuotePage extends HookWidget {
       width: double.infinity,
       height: MediaQuery.of(context).size.height,
       child: SafeArea(
-          child: quoteVm.error
-              ? ErrorBody(message: quoteVm.errorMsg)
+          child: randomQuote.error
+              ? ErrorBody(message: randomQuote.errorMsg)
               : Column(
                   children: [
                     SizedBox(
@@ -34,10 +34,15 @@ class RandomQuotePage extends HookWidget {
                           width: size.width * 0.5,
                           alignment: Alignment.center,
                         )),
-                    Expanded(child: FadeAnimation(0.2, QuotePage(quoteVm))),
+                    Expanded(child: FadeAnimation(0.2, QuotePage(randomQuote))),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 50),
-                      child: FadeAnimation(0.3, ActionIcons(isQuoteOfDay: false,)),
+                      child: FadeAnimation(
+                          0.3,
+                          ActionIcons(
+                            isQuoteOfDay: false,
+                            quote: randomQuote.quote,
+                          )),
                     )
                   ],
                 )),
