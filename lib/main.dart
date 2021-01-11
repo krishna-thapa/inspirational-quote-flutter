@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/all.dart';
 
 import 'env/globalVar.dart';
 import 'pages/homeQuote/quote_home_page.dart';
-import 'pages/login/login_home_page.dart';
+import 'pages/login/login_page.dart';
 import 'pages/randomQuote/random_quote_page.dart';
 import 'pages/searchQuote/search_quote_home_page.dart';
 import 'widgets/colors.dart';
@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
     QuoteHomePage(),
     RandomQuotePage(),
     SearchQuoteHomePage(),
-    LoginHomePage(),
+    LoginPage(),
   ];
 
   @override

@@ -32,16 +32,16 @@ class _SignupPageState extends State<SignupPage> {
               HeadingMessages("Sign up", "Create a new account"),
               Column(
                 children: [
-                  FadeAnimation(1.2, InputField("First Name")),
-                  FadeAnimation(1.2, InputField("Last Name")),
-                  FadeAnimation(1.3, InputField("Email", true)),
-                  FadeAnimation(1.3, InputField("Password", true)),
-                  FadeAnimation(1.4, InputField("Confirm Password", true))
+                  FadeAnimation(0.2, InputField("First Name")),
+                  FadeAnimation(0.2, InputField("Last Name")),
+                  FadeAnimation(0.3, InputField("Email", true)),
+                  FadeAnimation(0.3, InputField("Password", true)),
+                  FadeAnimation(0.4, InputField("Confirm Password", true))
                 ],
               ),
-              ColoredButton("Sign up"),
-              subHeadingLogin("Already have an account?", "Login", 1.2),
               SizedBox(height: 20),
+              ColoredButton("Sign up"),
+              subHeadingLogin(context, false),
             ],
           ),
         )

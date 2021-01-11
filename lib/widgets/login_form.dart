@@ -6,7 +6,7 @@ Widget loginForm([label, icon, obscureText = false]) {
     children: <Widget>[
       Text(label, style: TextStyle(
           fontSize: 15,
-          fontWeight: FontWeight.w400,
+          fontWeight: FontWeight.w700,
           color: Colors.black87
       ),),
       SizedBox(height: 5,),

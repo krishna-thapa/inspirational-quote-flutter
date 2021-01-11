@@ -31,21 +31,6 @@ class QuoteService {
   }
 
   /*
-    Get the quote of the day from the database
-    TODO: Delete in the future
-   */
-  Future<Quote> getQuoteOfTheDay() async {
-    final url = '/quoteOfTheDay';
-    try {
-      final response = await _dio.get(url);
-      Quote result = Quote.fromJson(response.data);
-      return result;
-    } on DioError catch (dioError) {
-      throw QuoteException.fromDioError(dioError);
-    }
-  }
-
-  /*
     Get all Redis stored quote of the day
     Maximum would be last 5 quotes of the day
    */

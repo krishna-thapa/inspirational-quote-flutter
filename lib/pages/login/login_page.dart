@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/all.dart';
 import 'package:inspirational_quote_flutter/animations/FadeAnimation.dart';
-import 'package:inspirational_quote_flutter/widgets/appbar_login.dart';
 import 'package:inspirational_quote_flutter/widgets/colors.dart';
-import 'package:inspirational_quote_flutter/widgets/heading_messages.dart';
 import 'package:inspirational_quote_flutter/widgets/colored_button.dart';
 import 'package:inspirational_quote_flutter/widgets/login_form.dart';
 import 'package:inspirational_quote_flutter/widgets/sub_heading_login.dart';
@@ -18,53 +16,44 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final themeColor = useProvider(themeColorNotifierProvider);
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      extendBodyBehindAppBar: true,
-      //backgroundColor: Colors.white,
-      appBar: AppBarLogin(),
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: double.infinity,
-        decoration: themeColor.baseBackgroundDecoration,
+    return Container(
+      decoration: themeColor.baseBackgroundDecoration,
+      width: double.infinity,
+      height: MediaQuery.of(context).size.height,
+      child: SafeArea(
         child: ListView(
-          children: <Widget>[
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  HeadingMessages("Login", "Login to your account"),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 40),
-                    child: Column(
-                      children: [
-                        FadeAnimation(1.1, loginForm("Email", Icons.email)),
-                        FadeAnimation(1.2,
-                            loginForm("Password", Icons.lock_outline, true)),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        ColoredButton("Login"),
-                      ],
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                //HeadingMessages("Welcome", "Login to your account"),
+                  FadeAnimation(0.4, Container(
+                    height: MediaQuery.of(context).size.height / 2.5,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/images/good_vibe.png')
+                        )
                     ),
+                  )),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 40),
+                  child: Column(
+                    children: [
+                      FadeAnimation(0.2, loginForm("Email", Icons.email)),
+                      FadeAnimation(0.2,
+                          loginForm("Password", Icons.lock_outline, true)),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      ColoredButton("Login"),
+                    ],
                   ),
-                  subHeadingLogin("Don't have an account?", "Sign up", 1.2),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  FadeAnimation(
-                      1.2,
-                      Container(
-                        height: MediaQuery.of(context).size.height / 3,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage(
-                                    'assets/images/today_is_your_day.png'),
-                                fit: BoxFit.cover,
-                                alignment: Alignment.center)),
-                      ))
-                ],
-              ),
+                ),
+                subHeadingLogin(context, true),
+                SizedBox(
+                  height: 5,
+                ),
+              ],
             )
           ],
         ),
