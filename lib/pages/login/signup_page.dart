@@ -40,7 +40,7 @@ class _SignupPageState extends State<SignupPage> {
                 ],
               ),
               SizedBox(height: 20),
-              ColoredButton("Sign up"),
+              ColoredButton(label: "Sign up"),
               subHeadingLogin(context, false),
             ],
           ),
