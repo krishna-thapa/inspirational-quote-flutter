@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:hooks_riverpod/all.dart';
+import 'package:inspirational_quote_flutter/env/globalVar.dart';
 import 'package:inspirational_quote_flutter/models/quote.dart';
 import 'package:inspirational_quote_flutter/pages/shared/quote-text.dart';
 import 'package:inspirational_quote_flutter/viewmodels/quotesOfDay_vm.dart';
@@ -19,6 +20,7 @@ class _QuoteCardState extends State<QuoteCard> {
   Widget build(BuildContext context) {
     final QuotesOfDayViewModel allQuotesOfDay =
         useProvider(quotesOfDayProvider);
+    final GlobalVar globalVar = useProvider(globalVarNotifierProvider);
     return allQuotesOfDay.loading
         ? Center(child: CircularProgressIndicator())
         : Swiper(
@@ -26,7 +28,11 @@ class _QuoteCardState extends State<QuoteCard> {
             itemWidth: MediaQuery.of(context).size.width - 40.0,
             itemCount: allQuotesOfDay.quote.length,
             layout: SwiperLayout.STACK,
-            loop: false,
+            loop: true,
+            onIndexChanged: (index) {
+              debugPrint("index:${allQuotesOfDay.quote.elementAt(index).contentDate}");
+              globalVar.setQuotesDate(allQuotesOfDay.quote.elementAt(index).contentDate);
+            },
             controller: _controller,
             itemBuilder: (BuildContext context, int index) {
               final Quote quote = allQuotesOfDay.quote.elementAt(index).quote;

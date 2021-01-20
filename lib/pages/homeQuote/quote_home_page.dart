@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/all.dart';
 import 'package:inspirational_quote_flutter/animations/FadeAnimation.dart';
+import 'package:inspirational_quote_flutter/env/globalVar.dart';
 import 'package:inspirational_quote_flutter/pages/errorBody/error_response_body.dart';
 import 'package:inspirational_quote_flutter/pages/homeQuote/quote_card.dart';
 import 'package:inspirational_quote_flutter/viewmodels/quotesOfDay_vm.dart';
@@ -12,6 +13,7 @@ class QuoteHomePage extends HookWidget {
   Widget build(BuildContext context) {
     final QuotesOfDayViewModel allQuotesOfDay =
         useProvider(quotesOfDayProvider);
+    final GlobalVar globalVar = useProvider(globalVarNotifierProvider);
     final ThemeColor themeColor = useProvider(themeColorNotifierProvider);
     final size = MediaQuery.of(context).size;
     return Container(
@@ -49,7 +51,7 @@ class QuoteHomePage extends HookWidget {
                             child: Opacity(
                               opacity: .6,
                               child: Text(
-                                "today's quote",
+                                "${globalVar.quotesDate}",
                               ),
                             ),
                           ),

@@ -7,6 +7,7 @@ final globalVarNotifierProvider =
 class GlobalVar extends ChangeNotifier {
   int currentIndex = 0;
   bool isFavQuote = false;
+  String quotesDate = "today";
 
   void selectedPage(int index) {
     currentIndex = index;
@@ -15,6 +16,11 @@ class GlobalVar extends ChangeNotifier {
 
   void setFavQuote(bool favQuote) {
     isFavQuote = favQuote;
+    notifyListeners();
+  }
+
+  void setQuotesDate(String date) {
+    quotesDate = date;
     notifyListeners();
   }
 }
