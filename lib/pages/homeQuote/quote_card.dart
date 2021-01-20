@@ -30,8 +30,9 @@ class _QuoteCardState extends State<QuoteCard> {
             layout: SwiperLayout.STACK,
             loop: true,
             onIndexChanged: (index) {
-              debugPrint("index:${allQuotesOfDay.quote.elementAt(index).contentDate}");
+              index == 0 ? globalVar.setQuotesDate("today's quote") :
               globalVar.setQuotesDate(allQuotesOfDay.quote.elementAt(index).contentDate);
+              globalVar.setFavQuote(allQuotesOfDay.quote.elementAt(index).isFavQuote);
             },
             controller: _controller,
             itemBuilder: (BuildContext context, int index) {
