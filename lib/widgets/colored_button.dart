@@ -1,7 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:inspirational_quote_flutter/animations/FadeAnimation.dart';
+import 'dart:convert';
 
-class ColoredButton extends StatefulWidget {
+import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:inspirational_quote_flutter/animations/FadeAnimation.dart';
+import 'package:inspirational_quote_flutter/pages/login/login_provider.dart';
+
+class ColoredButton extends StatefulHookWidget {
   final String label;
   final GlobalKey<FormState> formKey;
 
@@ -14,6 +19,7 @@ class ColoredButton extends StatefulWidget {
 class _ColoredButtonState extends State<ColoredButton> {
   @override
   Widget build(BuildContext context) {
+    final LoginProvider loginProvider = useProvider(loginNotifierProvider);
     return FadeAnimation(
         0.2,
         Container(
@@ -33,9 +39,11 @@ class _ColoredButtonState extends State<ColoredButton> {
               // Validate returns true if the form is valid, or false
               if (widget.formKey.currentState.validate()) {
                 // If the form is valid, display a Snackbar.
+                widget.formKey.currentState.save();
                 Scaffold.of(context)
                     .showSnackBar(SnackBar(content: Text('Processing Data')));
               }
+              debugPrint("Result Json: ${jsonEncode(loginProvider.loginModel)}");
             },
             color: Colors.teal,
             elevation: 0,

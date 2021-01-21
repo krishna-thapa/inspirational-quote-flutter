@@ -7,6 +7,7 @@ import 'package:inspirational_quote_flutter/widgets/colored_button.dart';
 import 'package:inspirational_quote_flutter/pages/login/login_form.dart';
 import 'package:inspirational_quote_flutter/widgets/sub_heading_login.dart';
 
+// TODO Change to Stateless ??
 class LoginPage extends StatefulHookWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -46,9 +47,9 @@ class _LoginPageState extends State<LoginPage> {
                     padding: EdgeInsets.symmetric(horizontal: 40),
                     child: Column(
                       children: [
-                        FadeAnimation(0.2, loginForm("Email", Icons.email)),
+                        FadeAnimation(0.2, LoginForm("Email", Icons.email, false)),
                         FadeAnimation(0.2,
-                            loginForm("Password", Icons.lock_outline, true)),
+                            LoginForm("Password", Icons.lock_outline, true)),
                         SizedBox(
                           height: 5,
                         ),
