@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:inspirational_quote_flutter/viewmodels/quotesOfDay_vm.dart';
-import 'package:inspirational_quote_flutter/viewmodels/random_quote_vm.dart';
+import 'package:inspirational_quote_flutter/view_models/quotesOfDay_vm.dart';
+import 'package:inspirational_quote_flutter/view_models/random_quote_vm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ErrorBody extends HookWidget {

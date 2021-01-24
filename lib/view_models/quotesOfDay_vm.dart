@@ -24,8 +24,7 @@ class QuotesOfDayViewModel extends ChangeNotifier {
     loading = true;
     notifyListeners();
     try {
-      final List<AllQuotesOfDay> res =
-      await quotesRepository.getAllQuotesOfDay();
+      final List<AllQuotesOfDay> res = await quotesRepository.getAllQuotesOfDay();
       error = false;
       // Sorting the list with content date in descending order
       if (res.length > 1) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:inspirational_quote_flutter/animations/FadeAnimation.dart';
 import 'package:inspirational_quote_flutter/pages/shared/quote-text.dart';
-import 'package:inspirational_quote_flutter/viewmodels/random_quote_vm.dart';
+import 'package:inspirational_quote_flutter/view_models/random_quote_vm.dart';
 
 class QuotePage extends StatefulWidget {
   final QuoteViewModel quote;

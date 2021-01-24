@@ -5,7 +5,7 @@ import 'package:inspirational_quote_flutter/animations/FadeAnimation.dart';
 import 'package:inspirational_quote_flutter/env/globalVar.dart';
 import 'package:inspirational_quote_flutter/pages/errorBody/error_response_body.dart';
 import 'package:inspirational_quote_flutter/pages/homeQuote/quote_card.dart';
-import 'package:inspirational_quote_flutter/viewmodels/quotesOfDay_vm.dart';
+import 'package:inspirational_quote_flutter/view_models/quotesOfDay_vm.dart';
 import 'package:inspirational_quote_flutter/widgets/colors.dart';
 
 class QuoteHomePage extends HookWidget {

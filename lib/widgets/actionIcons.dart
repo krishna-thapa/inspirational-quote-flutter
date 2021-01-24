@@ -5,7 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/all.dart';
 import 'package:inspirational_quote_flutter/env/globalVar.dart';
 import 'package:inspirational_quote_flutter/models/quote.dart';
-import 'package:inspirational_quote_flutter/viewmodels/random_quote_vm.dart';
+import 'package:inspirational_quote_flutter/view_models/random_quote_vm.dart';
 import 'package:share/share.dart';
 
 import 'animate_button.dart';
