@@ -1,31 +1,23 @@
-import 'dart:developer';
-
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:inspirational_quote_flutter/models/all_quotes_of_day.dart';
 import 'package:inspirational_quote_flutter/repository/quotes_repository.dart';
+import 'package:inspirational_quote_flutter/view_models/quote_base_model.dart';
 
 final quotesOfDayProvider = ChangeNotifierProvider<QuotesOfDayViewModel>((ref) {
   return QuotesOfDayViewModel();
 });
 
-class QuotesOfDayViewModel extends ChangeNotifier {
+class QuotesOfDayViewModel extends QuoteBaseModel<List<AllQuotesOfDay>> {
   QuotesOfDayViewModel() {
     getAllQuotesOfDayVM();
   }
 
   QuotesRepository quotesRepository = new QuotesRepository();
-  bool loading = false;
-  bool error = false;
-  String errorMsg = "Something went wrong!";
-  List<AllQuotesOfDay> quote;
 
   Future<void> getAllQuotesOfDayVM() async {
-    loading = true;
-    notifyListeners();
+    setLoadingAsTrue();
     try {
       final List<AllQuotesOfDay> res = await quotesRepository.getAllQuotesOfDay();
-      error = false;
       // Sorting the list with content date in descending order
       if (res.length > 1) {
         res.sort((a, b) {
@@ -37,15 +29,9 @@ class QuotesOfDayViewModel extends ChangeNotifier {
         res.insert(0, res.last);
         res.removeLast();
       }
-      quote = res;
-      loading = false;
-      notifyListeners();
+      setReturnState(res);
     } catch (e) {
-      log("log error while getting random quote: ${e.toString()}");
-      error = true;
-      errorMsg = e.toString();
-      loading = false;
-      notifyListeners();
+      setErrorState(e.toString());
     }
   }
 }

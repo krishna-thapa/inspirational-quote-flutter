@@ -1,6 +1,3 @@
-List<Quote> quotesModelFromJson(List<dynamic> str) =>
-    List<Quote>.from(str.map((x) => Quote.fromJson(x)));
-
 class Quote {
   final int id;
   final String csvId;

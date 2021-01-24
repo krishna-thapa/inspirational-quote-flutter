@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 
+import 'api_error_response.dart';
+
 class QuoteException implements Exception {
   QuoteException.fromDioError(DioError dioError) {
     switch (dioError.type) {
@@ -13,7 +15,7 @@ class QuoteException implements Exception {
         message = "Receive timeout in connection with API server";
         break;
       case DioErrorType.RESPONSE:
-        message = _handleError(dioError.response.statusCode);
+        message = _handleError(dioError.response);
         break;
       case DioErrorType.CANCEL:
         message = "Request to API server was cancelled";
@@ -29,12 +31,17 @@ class QuoteException implements Exception {
 
   String message;
 
-  String _handleError(int statusCode) {
-    switch (statusCode) {
+  String _handleError(Response response) {
+    final errorMsgResponse = ApiErrorResponse.fromJson(response.data);
+    switch (response.statusCode) {
       case 400:
-        return "Bad request";
+        return "Bad request: ${errorMsgResponse.userMsg}";
+      case 401:
+        return "Unauthorized: ${errorMsgResponse.userMsg}";
       case 404:
-        return "The requested resource was not found";
+        return "Not found: ${errorMsgResponse.userMsg}";
+      case 422:
+        return "Unprocessable Entity: ${errorMsgResponse.userMsg}";
       case 500:
         return "Internal server error";
       default:

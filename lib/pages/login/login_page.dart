@@ -47,7 +47,8 @@ class _LoginPageState extends State<LoginPage> {
                     padding: EdgeInsets.symmetric(horizontal: 40),
                     child: Column(
                       children: [
-                        FadeAnimation(0.2, LoginForm("Email", Icons.email, false)),
+                        FadeAnimation(0.2,
+                            LoginForm("Email", Icons.email, false)),
                         FadeAnimation(0.2,
                             LoginForm("Password", Icons.lock_outline, true)),
                         SizedBox(

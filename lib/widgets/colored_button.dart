@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:inspirational_quote_flutter/animations/FadeAnimation.dart';
 import 'package:inspirational_quote_flutter/pages/login/login_provider.dart';
+import 'package:inspirational_quote_flutter/view_models/login_vm.dart';
 
 class ColoredButton extends StatefulHookWidget {
   final String label;
@@ -20,6 +21,7 @@ class _ColoredButtonState extends State<ColoredButton> {
   @override
   Widget build(BuildContext context) {
     final LoginProvider loginProvider = useProvider(loginNotifierProvider);
+    final LoginViewModel loginUser = useProvider(loginUserProvider);
     return FadeAnimation(
         0.2,
         Container(
@@ -38,12 +40,15 @@ class _ColoredButtonState extends State<ColoredButton> {
             onPressed: () {
               // Validate returns true if the form is valid, or false
               if (widget.formKey.currentState.validate()) {
-                // If the form is valid, display a Snackbar.
                 widget.formKey.currentState.save();
-                Scaffold.of(context)
-                    .showSnackBar(SnackBar(content: Text('Processing Data')));
+                loginUser.error
+                    ? Scaffold.of(context).showSnackBar(
+                        SnackBar(content: Text('${loginUser.errorMsg}')))
+                    : Scaffold.of(context).showSnackBar(
+                        SnackBar(content: Text('Success: ${loginUser.quote}')));
+                debugPrint(
+                    "Result Json: ${jsonEncode(loginProvider.loginModel)}");
               }
-              debugPrint("Result Json: ${jsonEncode(loginProvider.loginModel)}");
             },
             color: Colors.teal,
             elevation: 0,

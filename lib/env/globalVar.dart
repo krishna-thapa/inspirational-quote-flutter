@@ -8,6 +8,7 @@ class GlobalVar extends ChangeNotifier {
   int currentIndex = 0;
   bool isFavQuote = false;
   String quotesDate = "today's quote";
+  String setJwtToken;
 
   void selectedPage(int index) {
     currentIndex = index;
@@ -21,6 +22,11 @@ class GlobalVar extends ChangeNotifier {
 
   void setQuotesDate(String date) {
     quotesDate = date;
+    notifyListeners();
+  }
+
+  void setJwtTokenKey(String jwtToken) {
+    setJwtToken = jwtToken;
     notifyListeners();
   }
 }

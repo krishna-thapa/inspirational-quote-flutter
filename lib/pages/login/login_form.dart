@@ -38,10 +38,11 @@ class _LoginFormState extends State<LoginForm> {
             if (formValue.isEmpty) {
               return 'Please enter your ${widget.label}';
             }
-            if (!widget.isPasswordField &&
-                !EmailValidator.validate(formValue)) {
-              return 'Invalid email format';
-            } else if (widget.isPasswordField && formValue.length < 4) {
+//            else if (!widget.isPasswordField &&
+//                !EmailValidator.validate(formValue)) {
+//              return 'Invalid email format';
+//            }
+            else if (widget.isPasswordField && formValue.length < 4) {
               return 'Invalid text length';
             }
             return null;

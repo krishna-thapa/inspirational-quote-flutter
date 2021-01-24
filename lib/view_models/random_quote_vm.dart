@@ -1,40 +1,27 @@
-import 'dart:developer';
-
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:inspirational_quote_flutter/models/quote.dart';
 import 'package:inspirational_quote_flutter/repository/quotes_repository.dart';
+
+import 'quote_base_model.dart';
 
 final randomQuoteProvider = ChangeNotifierProvider<QuoteViewModel>((ref) {
   return QuoteViewModel();
 });
 
-class QuoteViewModel extends ChangeNotifier {
+class QuoteViewModel extends QuoteBaseModel<Quote> {
   QuoteViewModel() {
     getRandomQuoteVM();
   }
 
   QuotesRepository quotesRepository = new QuotesRepository();
-  bool loading = false;
-  bool error = false;
-  String errorMsg = "Something went wrong!";
-  Quote quote;
 
   Future<void> getRandomQuoteVM() async {
-    loading = true;
-    notifyListeners();
+    setLoadingAsTrue();
     try {
       final Quote res = await quotesRepository.getRandomQuote();
-      error = false;
-      quote = res;
-      loading = false;
-      notifyListeners();
+      setReturnState(res);
     } catch (e) {
-      log("log error while getting random quote: ${e.toString()}");
-      error = true;
-      errorMsg = e.toString();
-      loading = false;
-      notifyListeners();
+      setErrorState(e.toString());
     }
   }
 }

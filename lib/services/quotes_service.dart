@@ -1,30 +1,20 @@
 import 'package:dio/dio.dart';
 import 'package:inspirational_quote_flutter/models/all_quotes_of_day.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:inspirational_quote_flutter/exception/quote_exception.dart';
 import 'package:inspirational_quote_flutter/models/quote.dart';
 
-class QuoteService {
-  Dio _dio;
+import 'base_service.dart';
 
-  QuoteService() {
-    BaseOptions options = BaseOptions(
-        receiveTimeout: 100000,
-        connectTimeout: 100000,
-        baseUrl: "http://localhost:9000/quote");
-    _dio = Dio(options);
-    _dio.interceptors.add(PrettyDioLogger());
-  }
+class QuoteService extends BaseService {
 
   /*
     Get the random quote from the database
    */
   Future<Quote> getRandomQuote() async {
-    final url = '/random';
+    final url = 'quote/random';
     try {
-      final response = await _dio.get(url);
-      Quote result = Quote.fromJson(response.data);
-      return result;
+      final response = await dio.get(url);
+      return Quote.fromJson(response.data);
     } on DioError catch (dioError) {
       throw QuoteException.fromDioError(dioError);
     }
@@ -35,11 +25,10 @@ class QuoteService {
     Maximum would be last 5 quotes of the day
    */
   Future<List<AllQuotesOfDay>> getAllQuotesOfDay() async {
-    final url = '/quotesOfTheDay';
+    final url = 'quote/quotesOfTheDay';
     try {
-      final response = await _dio.get(url);
-      List<AllQuotesOfDay> result = allQuotesModelFromJson(response.data);
-      return result;
+      final response = await dio.get(url);
+      return allQuotesModelFromJson(response.data);
     } on DioError catch (dioError) {
       throw QuoteException.fromDioError(dioError);
     }
